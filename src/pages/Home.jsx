@@ -1,3 +1,4 @@
+import HeroDevice from "../components/HeroDevice.jsx";
 import "./Home.css";
 
 const LOOP_STEPS = [
@@ -27,26 +28,29 @@ export default function Home() {
   return (
     <>
       <section className="hero">
-        <p className="hero__eyebrow">Idle AI research &amp; management</p>
-        <h1 className="hero__title">
-          Build intelligence.
-          <br />
-          Contain what you create.
-        </h1>
-        <p className="hero__sub">
-          Train increasingly powerful AI models, watch your lab grow tile by
-          tile, and race to contain the incidents your own creations cause.
-          The map behind this page is your lab — the same one you'll be
-          running on your phone.
-        </p>
-        <div className="hero__cta">
-          <span className="btn btn--primary" aria-disabled="true">
-            Coming soon — iOS &amp; Android
-          </span>
-          <a className="btn btn--ghost" href="mailto:guylhass@gmail.com?subject=Notify%20me%20-%20AI%20LAB">
-            Get notified at launch
-          </a>
+        <div className="hero__copy">
+          <p className="hero__eyebrow">Idle AI research &amp; management</p>
+          <h1 className="hero__title">
+            Build intelligence.
+            <br />
+            Contain what you create.
+          </h1>
+          <p className="hero__sub">
+            Train increasingly powerful AI models, watch your lab grow tile
+            by tile, and race to contain the incidents your own creations
+            cause. That's your actual lab on the right — live, not a
+            screenshot — running the same scene as the app.
+          </p>
+          <div className="hero__cta">
+            <span className="btn btn--primary" aria-disabled="true">
+              Coming soon — iOS &amp; Android
+            </span>
+            <a className="btn btn--ghost" href="mailto:guylhass@gmail.com?subject=Notify%20me%20-%20AI%20LAB">
+              Get notified at launch
+            </a>
+          </div>
         </div>
+        <HeroDevice />
       </section>
 
       <section className="section">

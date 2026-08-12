@@ -1,25 +1,13 @@
-.lab-map-bg {
-  position: fixed;
+.lab-map-stage {
+  position: absolute;
   inset: 0;
-  z-index: 0;
   overflow: hidden;
   pointer-events: none;
   user-select: none;
-  background: radial-gradient(
-    1200px 800px at 50% 30%,
-    #f6f1e4 0%,
-    #e7f1f8 70%
-  );
-}
-
-.lab-map-bg #stage {
-  position: absolute;
-  inset: 0;
-  transform: scale(1.02);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .lab-map-bg {
-    opacity: 0.6;
+  .lab-map-stage {
+    opacity: 0.75;
   }
 }
