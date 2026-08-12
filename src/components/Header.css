@@ -33,7 +33,9 @@
 
 .site-header__nav {
   display: flex;
-  gap: var(--space-24);
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--space-16) var(--space-24);
 }
 
 .site-header__nav a {
@@ -54,6 +56,10 @@
 
 @media (max-width: 560px) {
   .site-header__nav {
-    gap: var(--space-16);
+    gap: var(--space-9) var(--space-16);
+  }
+
+  .site-header__nav a {
+    font-size: 13px;
   }
 }

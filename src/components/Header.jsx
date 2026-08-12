@@ -29,6 +29,18 @@ export default function Header() {
           >
             Terms
           </NavLink>
+          <NavLink
+            to="/children-safety"
+            className={({ isActive }) => (isActive ? "is-active" : "")}
+          >
+            Safety
+          </NavLink>
+          <NavLink
+            to="/restore-purchases"
+            className={({ isActive }) => (isActive ? "is-active" : "")}
+          >
+            Restore
+          </NavLink>
         </nav>
       </div>
     </header>

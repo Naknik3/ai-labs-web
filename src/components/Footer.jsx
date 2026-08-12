@@ -14,6 +14,8 @@ export default function Footer() {
           <Link to="/">Home</Link>
           <Link to="/privacy">Privacy Policy</Link>
           <Link to="/terms">Terms of Service</Link>
+          <Link to="/children-safety">Children's Safety</Link>
+          <Link to="/restore-purchases">Restore Purchases</Link>
           <a href="mailto:guylhass@gmail.com">Contact</a>
         </nav>
         <p className="site-footer__copy">

@@ -1,4 +1,4 @@
-import HeroDevice from "../components/HeroDevice.jsx";
+import HeroScene from "../components/HeroScene.jsx";
 import "./Home.css";
 
 const LOOP_STEPS = [
@@ -27,31 +27,28 @@ const SECTORS = [
 export default function Home() {
   return (
     <>
-      <section className="hero">
-        <div className="hero__copy">
-          <p className="hero__eyebrow">Idle AI research &amp; management</p>
-          <h1 className="hero__title">
-            Build intelligence.
-            <br />
-            Contain what you create.
-          </h1>
-          <p className="hero__sub">
-            Train increasingly powerful AI models, watch your lab grow tile
-            by tile, and race to contain the incidents your own creations
-            cause. That's your actual lab on the right — live, not a
-            screenshot — running the same scene as the app.
-          </p>
-          <div className="hero__cta">
-            <span className="btn btn--primary" aria-disabled="true">
-              Coming soon — iOS &amp; Android
-            </span>
-            <a className="btn btn--ghost" href="mailto:guylhass@gmail.com?subject=Notify%20me%20-%20AI%20LAB">
-              Get notified at launch
-            </a>
-          </div>
+      <HeroScene>
+        <p className="hero__eyebrow">Idle AI research &amp; management</p>
+        <h1 className="hero__title">
+          Build intelligence.
+          <br />
+          Contain what you create.
+        </h1>
+        <p className="hero__sub">
+          Train increasingly powerful AI models, watch your lab grow tile by
+          tile, and race to contain the incidents your own creations cause.
+          Everything behind this text is your actual lab, live — the same
+          scene, the same HUD, running right now.
+        </p>
+        <div className="hero__cta">
+          <span className="btn btn--primary" aria-disabled="true">
+            Coming soon — iOS &amp; Android
+          </span>
+          <a className="btn btn--ghost" href="mailto:guylhass@gmail.com?subject=Notify%20me%20-%20AI%20LAB">
+            Get notified at launch
+          </a>
         </div>
-        <HeroDevice />
-      </section>
+      </HeroScene>
 
       <section className="section">
         <h2 className="section__title">The loop</h2>

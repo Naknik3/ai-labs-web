@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Design reference dump (not site source — kept locally for reference only)
+/design_handoff_ai_lab_light
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

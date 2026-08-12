@@ -26,7 +26,9 @@
 
 .site-footer__links {
   display: flex;
-  gap: var(--space-20);
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-9) var(--space-20);
 }
 
 .site-footer__links a {

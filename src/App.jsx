@@ -3,6 +3,8 @@ import Layout from "./components/Layout.jsx";
 import Home from "./pages/Home.jsx";
 import Privacy from "./pages/Privacy.jsx";
 import Terms from "./pages/Terms.jsx";
+import ChildrenSafety from "./pages/ChildrenSafety.jsx";
+import RestorePurchases from "./pages/RestorePurchases.jsx";
 import NotFound from "./pages/NotFound.jsx";
 
 export default function App() {
@@ -12,6 +14,8 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
+        <Route path="/children-safety" element={<ChildrenSafety />} />
+        <Route path="/restore-purchases" element={<RestorePurchases />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Layout>
