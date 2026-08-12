@@ -8,21 +8,14 @@ export default function Privacy() {
         <p className="legal__updated">Last updated August 12, 2026</p>
       </div>
 
-      <div className="legal__notice">
-        <strong>Before you publish this:</strong> this is a working draft
-        written to match how AI LAB actually handles data today. It isn't
-        legal advice. Have a lawyer review it — especially the sections on
-        children's privacy, advertising/analytics, and regional rights
-        (GDPR, CCPA, and similar) — before it goes live for real users.
-      </div>
-
       <div className="legal__doc">
         <h2>Overview</h2>
         <p>
           AI LAB ("we", "us", "the game") is an idle AI research management
           game for iOS and Android. This policy explains what information
-          the game collects, why, and what choices you have. We built AI LAB
-          to run without an account or login — this policy reflects that.
+          the game — and this website — collect, why, and what choices you
+          have. AI LAB runs without an account or login, and this policy
+          reflects that.
         </p>
 
         <h2>Information we collect</h2>
@@ -31,8 +24,8 @@ export default function Privacy() {
           When you first open AI LAB, the app generates a random device
           token and stores it on your device. That token — not your name,
           email, or any account — is how our server recognizes your lab. It
-          is the only thing standing in for a login. There is no
-          username, password, or personal profile to create.
+          is the only thing standing in for a login. There is no username,
+          password, or personal profile to create.
         </p>
         <h3>Game state</h3>
         <p>
@@ -52,12 +45,20 @@ export default function Privacy() {
           data, and — where those tools have their own settings — give you
           a way to opt out of non-essential tracking.
         </p>
+        <h3>This website</h3>
+        <p>
+          The site you're reading this on (the AI LAB marketing site) is a
+          static page. It doesn't use cookies, doesn't run analytics, and
+          doesn't set any tracking identifiers. Clicking a "get notified"
+          link simply opens an email to us — we don't capture anything
+          automatically.
+        </p>
 
         <h2>What we don't collect</h2>
         <ul>
-          <li>No name, email address, or phone number</li>
+          <li>No name, email address, or phone number, unless you choose to email us</li>
           <li>No contacts, photos, or precise location</li>
-          <li>No payment card details (a future subscription would be handled entirely by the App Store / Google Play billing system, which we never see)</li>
+          <li>No payment card details — a future subscription would be handled entirely by the App Store / Google Play billing system, which we never see</li>
         </ul>
 
         <h2>How we use information</h2>
@@ -66,16 +67,37 @@ export default function Privacy() {
           <li>To keep the game fair and stable: prevent duplicate or conflicting progress across devices, debug issues.</li>
           <li>To communicate with you only if you email us directly.</li>
         </ul>
-        <p>We do not sell personal information, and we do not share your data with third parties for their own marketing purposes.</p>
+        <p>
+          We do not sell personal information, and we do not share your
+          data with third parties for their own marketing purposes.
+        </p>
+
+        <h2>Third-party services</h2>
+        <p>
+          Installing and paying for AI LAB (if you choose to subscribe to
+          AI LAB PRO) runs through Apple's App Store or Google Play, each
+          governed by its own privacy policy. If we turn on optional
+          analytics, advertising, or subscription-management tools, we'll
+          list them here by name before they go live: today, none are
+          active.
+        </p>
 
         <h2>How long we keep it</h2>
         <p>
           Your lab's game state is kept for as long as your device token is
           active, so you don't lose progress. If you'd like your data
           deleted — for example, because you're switching devices and don't
-          want your old lab around, or you simply want it gone — email us at{" "}
-          <a href="mailto:guylhass@gmail.com">guylhass@gmail.com</a> and
+          want your old lab around, or you simply want it gone — email us
+          at <a href="mailto:guylhass@gmail.com">guylhass@gmail.com</a> and
           we'll delete the lab tied to your device token.
+        </p>
+
+        <h2>International users</h2>
+        <p>
+          AI LAB's servers may process and store data in a different
+          country than the one you're playing from. By using the game, you
+          understand your information may be transferred to and processed
+          in those locations.
         </p>
 
         <h2>Children's privacy</h2>
@@ -106,7 +128,8 @@ export default function Privacy() {
         <p>
           If we materially change how AI LAB handles data — for example,
           when analytics, ads, or subscriptions go live — we'll update this
-          page and change the "last updated" date above.
+          page and change the "last updated" date above. Continuing to
+          play after a change means you accept the updated policy.
         </p>
 
         <h2>Contact us</h2>

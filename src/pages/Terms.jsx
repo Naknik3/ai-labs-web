@@ -8,14 +8,6 @@ export default function Terms() {
         <p className="legal__updated">Last updated August 12, 2026</p>
       </div>
 
-      <div className="legal__notice">
-        <strong>Before you publish this:</strong> this is a working draft,
-        not legal advice. Fill in your governing-law jurisdiction below and
-        have a lawyer review the whole thing — especially the virtual-items,
-        subscription, and liability sections — before real users agree to
-        it.
-      </div>
-
       <div className="legal__doc">
         <h2>1. Acceptance of terms</h2>
         <p>
@@ -84,7 +76,15 @@ export default function Terms() {
           you subscribed through.
         </p>
 
-        <h2>8. Availability</h2>
+        <h2>8. Third-party platforms</h2>
+        <p>
+          You access AI LAB through the Apple App Store or Google Play, and
+          those platforms' own terms of service and payment terms apply
+          alongside these terms whenever you install the Game or purchase
+          AI LAB PRO through them.
+        </p>
+
+        <h2>9. Availability</h2>
         <p>
           AI LAB depends on our servers being up. We'll try to keep the
           Game available and your progress intact, but we don't guarantee
@@ -92,7 +92,7 @@ export default function Terms() {
           temporarily for maintenance, or permanently if we discontinue it.
         </p>
 
-        <h2>9. Disclaimers</h2>
+        <h2>10. Disclaimers</h2>
         <p>
           The Game is provided "as is" and "as available," without
           warranties of any kind, express or implied, including
@@ -100,35 +100,55 @@ export default function Terms() {
           non-infringement, to the fullest extent permitted by law.
         </p>
 
-        <h2>10. Limitation of liability</h2>
+        <h2>11. Limitation of liability</h2>
         <p>
           To the fullest extent permitted by law, we won't be liable for
           any indirect, incidental, special, or consequential damages, or
           any loss of data or progress, arising from your use of the Game.
         </p>
 
-        <h2>11. Termination</h2>
+        <h2>12. Termination</h2>
         <p>
           You can stop using the Game at any time by uninstalling it. We
           may suspend or terminate access to the Game, in whole or in
           part, for violation of these terms or for operational reasons.
         </p>
 
-        <h2>12. Changes to these terms</h2>
+        <h2>13. Governing law</h2>
+        <p>
+          These terms are governed by the laws of{" "}
+          <strong>[governing-law jurisdiction — fill this in]</strong>,
+          without regard to conflict-of-law principles.
+        </p>
+
+        <h2>14. Severability</h2>
+        <p>
+          If any part of these terms is found unenforceable, the rest
+          remains in full effect.
+        </p>
+
+        <h2>15. Entire agreement</h2>
+        <p>
+          These terms, together with our Privacy Policy, are the entire
+          agreement between you and us about the Game, and replace any
+          earlier agreements on the same subject.
+        </p>
+
+        <h2>16. Assignment</h2>
+        <p>
+          You may not assign or transfer these terms. We may assign these
+          terms in connection with a merger, acquisition, or sale of
+          assets.
+        </p>
+
+        <h2>17. Changes to these terms</h2>
         <p>
           We may update these terms as the Game evolves. Continuing to
           play after an update means you accept the revised terms. We'll
           update the "last updated" date above whenever we make changes.
         </p>
 
-        <h2>13. Governing law</h2>
-        <p>
-          These terms are governed by the laws of{" "}
-          <strong>[your jurisdiction — fill this in]</strong>, without
-          regard to conflict-of-law principles.
-        </p>
-
-        <h2>14. Contact us</h2>
+        <h2>18. Contact us</h2>
         <p>
           Questions about these terms? Email{" "}
           <a href="mailto:guylhass@gmail.com">guylhass@gmail.com</a>.

@@ -17,20 +17,6 @@
   text-transform: uppercase;
 }
 
-.legal__notice {
-  background: #fff7ec;
-  border: 1px solid #f7d6a6;
-  border-radius: var(--radius-card);
-  padding: var(--space-16) var(--space-20);
-  font-size: 13.5px;
-  color: #8a5a18;
-  margin-bottom: var(--space-24);
-}
-
-.legal__notice strong {
-  color: #6a4110;
-}
-
 .legal__doc {
   background: var(--surface);
   border: 1px solid var(--border);
