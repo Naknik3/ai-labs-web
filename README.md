@@ -1,16 +1,51 @@
-# React + Vite
+# AI LAB — marketing & legal site
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Static React (Vite) site for AI LAB: landing page, Privacy Policy, and
+Terms of Service. Meant to be hosted as a static site (Vercel, Netlify,
+GitHub Pages, S3+CloudFront, etc.) and linked from the App Store / Play
+Store listings.
 
-Currently, two official plugins are available:
+## What's here
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- `/` — landing page: pitch, the core loop, model/territory teasers.
+- `/privacy` — Privacy Policy (working draft — see the in-page notice).
+- `/terms` — Terms of Service (working draft — see the in-page notice).
+- Full-page background — the **real** AI LAB map scene (the same
+  `lab-map.bundle.js` the Flutter app loads in its WebView, copied from
+  `frontend/assets/map/` in the game repo), driven by a scripted loop in
+  `src/components/LabMapBackground.jsx` that grows the lab from a single
+  training cluster into a fully annexed territory, then resets.
 
-## React Compiler
+## Before this goes live
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Both legal pages are **working drafts**, not legal advice — they're
+written to match how the app behaves today (device-token-only, no login,
+analytics/ads/subscriptions stubbed but not active). Have a lawyer review
+them, especially:
 
-## Expanding the Oxlint configuration
+- Governing-law jurisdiction in Terms of Service §13 (currently a
+  placeholder).
+- Children's privacy / COPPA language if the game's audience shifts.
+- Any regional consumer-rights language (GDPR, CCPA, etc.) you need for
+  your actual launch markets.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+Update both pages again once analytics, ads, or the AI LAB PRO
+subscription actually go live — the drafts call this out explicitly.
+
+## Develop
+
+```sh
+npm install
+npm run dev      # http://localhost:5173
+npm run build    # outputs to dist/
+npm run preview  # serve the production build locally
+```
+
+## Updating the background map
+
+If the game's map scene changes, rebuild `frontend/assets/map/lab-map.bundle.js`
+in the main `AI-labz` repo (`tool/build_map.sh`) and copy it over
+`public/map/lab-map.bundle.js` here. The growth-loop keyframes in
+`LabMapBackground.jsx` use real building/sector/model keys from the game
+(`buildings.dart`, `sectors.dart`, `map_src/lab-models.js`) — update them
+there too if those change.
