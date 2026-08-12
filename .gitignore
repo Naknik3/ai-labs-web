@@ -12,8 +12,11 @@ dist
 dist-ssr
 *.local
 
-# Design reference dump (not site source — kept locally for reference only)
+# Design reference dump (not site source - kept locally for reference only)
 /design_handoff_ai_lab_light
+
+# three.js is copied out of node_modules by scripts/sync-three.mjs on dev/build
+/public/vendor/three
 
 # Editor directories and files
 .vscode/*

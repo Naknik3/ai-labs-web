@@ -1,179 +1,599 @@
-.btn {
-  display: inline-flex;
+/* Home page - ported 1:1 from the "AI-Labz Site" design handoff. */
+
+lab-scene,
+lab-building {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Hero ------------------------------------------------------------------- */
+
+.hero {
+  padding-block: 64px 8px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 14px;
-  letter-spacing: 0.02em;
-  padding: 14px 22px;
-  border-radius: var(--radius-button);
-  cursor: pointer;
-  border: none;
+  gap: 22px;
+  text-align: center;
 }
 
-.btn--primary {
-  background: var(--cyan);
-  color: #ffffff;
-  box-shadow: 0 4px 0 var(--cyan-deep);
-}
-
-.btn--primary[aria-disabled="true"] {
-  opacity: 0.9;
-  cursor: default;
-}
-
-.btn--ghost {
+.pill {
+  display: flex;
+  align-items: center;
+  gap: 9px;
   background: var(--surface);
-  color: var(--ink);
   border: 1px solid var(--border);
   box-shadow: 0 3px 0 var(--edge);
+  border-radius: var(--radius-pill);
+  padding: 8px 16px;
 }
 
-.btn--ghost:hover {
-  text-decoration: none;
-  color: var(--cyan-ink);
+.pill__dot {
+  width: 9px;
+  height: 9px;
+  border-radius: var(--radius-pill);
 }
+
+.pill__label {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--body);
+}
+
+.hero__title {
+  margin: 0;
+  font-size: clamp(38px, 6.4vw, 76px);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  max-width: 900px;
+  text-wrap: balance;
+  overflow-wrap: break-word;
+}
+
+.hero__lede {
+  margin: 0;
+  font-size: clamp(15px, 1.6vw, 19px);
+  line-height: 1.7;
+  color: var(--body);
+  max-width: 620px;
+  text-wrap: pretty;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 2px;
+}
+
+/* Hero scene panel -------------------------------------------------------- */
+
+.scene-section {
+  padding-block: 34px 12px;
+}
+
+.scene {
+  position: relative;
+  border-radius: var(--radius-panel);
+  overflow: hidden;
+  border: 1px solid var(--border-panel);
+  box-shadow: 0 8px 0 var(--edge-panel);
+  background: linear-gradient(180deg, #cde9f7 0%, #dff0f2 42%, #eaf6ec 68%, #f6f1e4 100%);
+  aspect-ratio: 16 / 9;
+}
+
+/* The handoff pins these panels with `min-height`, which fights `aspect-ratio`
+   and forces the box ~570px wide on a phone. Give them a taller ratio on
+   narrow screens instead, so the scene stays a usable size without overflowing. */
+@media (max-width: 720px) {
+  .scene {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+.scene__fallback {
+  position: absolute;
+  inset: 0;
+}
+
+.scene__risers {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  font-family: var(--font-display);
+  font-weight: 800;
+}
+
+.riser {
+  position: absolute;
+  font-size: clamp(13px, 1.4vw, 20px);
+  text-shadow:
+    0 1px 0 #fff,
+    0 0 8px #fff;
+  animation: labz-rise 3.6s ease-out infinite;
+}
+
+@keyframes labz-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  25% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-26px);
+  }
+}
+
+.scene__tag {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid var(--border);
+  box-shadow: 0 3px 0 var(--edge);
+  border-radius: var(--radius-chip);
+  padding: 9px 14px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--label);
+}
+
+.scene-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  justify-content: center;
+  padding-top: 24px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--label);
+}
+
+/* Section scaffolding ----------------------------------------------------- */
 
 .section {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 6vh var(--space-24);
+  padding-top: 76px;
+}
+
+/* Clear the sticky header when a section link scrolls one into view. */
+.home section[id] {
+  scroll-margin-top: 84px;
+}
+
+.section__head {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 660px;
+  margin-bottom: 34px;
+}
+
+.section__head--wide {
+  max-width: 620px;
+  margin-bottom: 28px;
 }
 
 .section__title {
-  font-size: clamp(24px, 3.4vw, 32px);
-  text-align: center;
+  margin: 0;
+  font-size: clamp(28px, 3.6vw, 44px);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
 }
 
 .section__lede {
-  text-align: center;
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.7;
   color: var(--body);
   max-width: 560px;
-  margin: 0 auto var(--space-24);
+  text-wrap: pretty;
 }
 
-/* Loop */
-.loop-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: var(--space-16);
+/* How it plays ------------------------------------------------------------ */
+
+.steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
-.loop-card {
+.step-card {
+  flex: 1 1 280px;
   background: var(--surface);
   border: 1px solid var(--border);
+  box-shadow: 0 5px 0 var(--edge);
   border-radius: var(--radius-card);
-  box-shadow: 0 3px 0 var(--edge);
-  padding: var(--space-20);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
-.loop-card__n {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--label);
-  margin-bottom: var(--space-9);
+.step-card__head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-.loop-card h3 {
-  font-size: 17px;
-  margin-bottom: var(--space-6);
+.step-card__badge {
+  width: 40px;
+  height: 40px;
+  border-radius: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 800;
+  flex: none;
 }
 
-.loop-card p {
-  font-size: 13.5px;
+.step-card__title {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.step-card__body {
+  font-size: 15px;
+  line-height: 1.7;
   color: var(--body);
-  margin: 0;
+  text-wrap: pretty;
 }
 
-/* Models */
-.model-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: var(--space-16);
+/* The lab ----------------------------------------------------------------- */
+
+.lab {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: stretch;
 }
 
-.model-card {
-  border-radius: var(--radius-card);
-  padding: var(--space-20);
-  color: #eef4f8;
-  background: linear-gradient(165deg, #1b2c3a 0%, #101a24 100%);
-  box-shadow: 0 3px 0 #0b131a;
+.lab__list {
+  flex: 1 1 300px;
+  min-width: 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lab-row {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+  font-family: var(--font-body);
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid var(--border);
+  box-shadow: 0 3px 0 transparent;
+  border-radius: 16px;
+  padding: 12px 14px;
+  transition: background 0.16s var(--ease-standard);
+}
+
+.lab-row:hover {
+  background: var(--surface);
+}
+
+.lab-row.is-active {
+  background: var(--surface);
+  box-shadow: 0 3px 0 var(--edge);
+}
+
+.lab-row__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-pill);
+  flex: none;
+}
+
+.lab-row__name {
+  font-size: 13.5px;
+  font-weight: 800;
+  color: var(--ink-2);
+  flex: 1;
+}
+
+.lab-row__cls {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--label-2);
+}
+
+.lab__detail {
+  flex: 2 1 520px;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.building {
   position: relative;
+  border-radius: 30px;
   overflow: hidden;
+  border: 1px solid var(--border-panel);
+  box-shadow: 0 6px 0 var(--edge-panel);
+  background: linear-gradient(180deg, #e4f3fa 0%, #edf7ec 100%);
+  aspect-ratio: 4 / 3;
 }
 
-.model-card__top {
+.building__caption {
+  position: absolute;
+  left: 18px;
+  top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  pointer-events: none;
+}
+
+.building__name {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.building__meta {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--label);
+}
+
+.level-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 0 var(--edge);
+  border-radius: 22px;
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.level-card__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.level-card__label {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: var(--label);
+}
+
+.level-card__value {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--cyan);
+}
+
+.level-card__value span {
+  font-size: 15px;
+  color: var(--faint);
+}
+
+.level-card input[type="range"] {
+  width: 100%;
+  accent-color: var(--cyan);
+  height: 26px;
+}
+
+.level-card__scale {
   display: flex;
   justify-content: space-between;
-  font-family: var(--font-mono);
-  font-size: 10.5px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  opacity: 0.75;
-  margin-bottom: var(--space-9);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--faint);
 }
 
-.model-card h3 {
-  color: #ffffff;
-  font-size: 19px;
-  margin-bottom: var(--space-6);
+/* Waitlist ---------------------------------------------------------------- */
+
+.cta {
+  background: var(--dark);
+  border-radius: var(--radius-panel);
+  padding: clamp(32px, 5vw, 62px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 36px;
+  align-items: center;
+  box-shadow: 0 8px 0 var(--dark-edge);
 }
 
-.model-card p {
-  font-size: 13px;
-  color: #b7c6d3;
+.cta__copy {
+  flex: 1 1 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cta__brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cta__mark {
+  border-radius: 12px;
+  flex: none;
+}
+
+.cta__brand .wordmark {
+  font-size: 26px;
+}
+
+.cta__title {
   margin: 0;
+  font-size: clamp(26px, 3.4vw, 40px);
+  line-height: 1.1;
+  color: var(--dark-ink);
+  text-wrap: balance;
 }
 
-.model-card--seed_01 .model-card__top {
-  color: #38e1ff;
-}
-.model-card--orrery_41 .model-card__top {
-  color: #ffb454;
-}
-.model-card--arc_7 .model-card__top {
-  color: #ff5c68;
-}
-
-/* Sectors */
-.sector-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-  gap: var(--space-16);
-}
-
-.sector-card {
-  background: var(--surface-sunken);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-card);
-  padding: var(--space-16) var(--space-20);
-}
-
-.sector-card h3 {
+.cta__lede {
+  margin: 0;
   font-size: 15px;
-  margin-bottom: var(--space-6);
+  line-height: 1.7;
+  color: var(--dark-body);
+  max-width: 460px;
+  text-wrap: pretty;
 }
 
-.sector-card__building {
-  font-size: 12.5px;
-  color: var(--body);
-  margin: 0 0 var(--space-6);
+.cta__form {
+  flex: 1 1 340px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.sector-card__bonus {
-  font-size: 12px;
-  font-weight: 800;
-  color: var(--green-deep);
-  margin: 0;
+.signup {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.section--cta {
+.signup input {
+  background: var(--dark-field);
+  border: 1px solid var(--dark-border);
+  border-radius: var(--radius-button);
+  padding: 17px 20px;
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--dark-ink);
+  outline: none;
+  width: 100%;
+}
+
+.signup input:focus {
+  border-color: var(--cyan);
+}
+
+.signup__submit {
+  cursor: pointer;
+  border: 0;
   text-align: center;
-  padding-bottom: 14vh;
+  background: var(--cyan);
+  color: #0a2833;
+  box-shadow: 0 4px 0 var(--cyan-deep);
+  border-radius: var(--radius-button);
+  padding: 17px 24px;
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 800;
+  transition: background 0.16s var(--ease-standard);
 }
 
-.section--cta .btn {
-  margin-top: var(--space-9);
+.signup__submit:hover:not(:disabled) {
+  background: var(--cyan-lit);
+}
+
+.signup__submit:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+
+.signup__error {
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #ffb4be;
+  text-align: center;
+}
+
+.signup__fine {
+  font-size: 12px;
+  color: var(--dark-muted);
+  text-align: center;
+}
+
+/* Honeypot. `display: none` is what bots check for, so hide it by taking it
+   out of the layout instead — invisible and unfocusable, but still "there". */
+.signup__botcheck {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.joined {
+  background: rgba(198, 242, 78, 0.12);
+  border: 1px solid #6e8a2e;
+  border-radius: 20px;
+  padding: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.joined__title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--lime);
+}
+
+.joined__body {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--dark-body);
+  overflow-wrap: anywhere;
+}
+
+/* FAQ --------------------------------------------------------------------- */
+
+.faq {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.faq-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: 0 5px 0 var(--edge);
+  border-radius: var(--radius-card);
+  padding: 26px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.faq-item__q {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--ink);
+}
+
+.faq-item__a {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--body);
+  text-wrap: pretty;
 }

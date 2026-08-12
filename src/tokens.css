@@ -1,32 +1,54 @@
-/* Design tokens ported from frontend/lib/styles/design_tokens.dart
-   (AI LAB Flutter app) so the marketing site stays visually on-brand. */
+/* Design tokens for the AI-LABZ marketing site.
+   Values are lifted verbatim from the "AI-Labz Site" design handoff so the
+   built site and the handoff render identically. */
 :root {
   /* Accents */
   --cyan: #17bfe0;
   --cyan-deep: #0f9dbb;
+  --cyan-lit: #22ccec;
   --cyan-ink: #0f8fab;
   --violet: #8b5cf6;
-  --violet-deep: #6f45d4;
-  --amber: #ff9a3c;
-  --amber-deep: #de7c22;
+  --amber: #ffb020;
+  --amber-ink: #e09000;
+  --amber-warm: #f5a623;
+  --amber-deep: #e8891f;
   --green: #35c77a;
-  --green-deep: #27a863;
-  --red: #f2544b;
-  --red-deep: #d6413a;
+  --green-deep: #2fb273;
+  --lime: #c6f24e;
+  --red: #ff5c6e;
 
-  /* Neutrals */
+  /* Light surfaces */
+  --cream: #f6f1e4;
+  --surface: #ffffff;
+  --surface-hint: #fbfdfe;
+
+  /* Ink */
   --ink: #1b2c3a;
-  --ink-2: #22333f;
+  --ink-2: #2b3e4d;
   --body: #5c7285;
   --body-2: #33475a;
-  --muted: #6b8092;
+  --body-3: #3c5364;
   --label: #8ca2b4;
-  --surface: #ffffff;
-  --surface-sunken: #f6fafc;
-  --board: #e7f1f8;
+  --label-2: #9cb0be;
+  --faint: #a9bcc8;
+  --eyebrow: #a9997a;
+
+  /* Borders + the flat "hard shadow" edges the whole design is built on */
   --border: #dce6ee;
-  --border-2: #e4edf2;
+  --border-panel: #d3e2ec;
   --edge: #cfdde8;
+  --edge-panel: #d9e4ec;
+  --rule: #e4dcca;
+  --rule-2: #e0d8c7;
+
+  /* Dark block (waitlist / CTA) */
+  --dark: #17122a;
+  --dark-edge: #0d0a1a;
+  --dark-field: #241d3e;
+  --dark-border: #3b3160;
+  --dark-ink: #f6f1e7;
+  --dark-body: #b4aecb;
+  --dark-muted: #8b84a6;
 
   /* Type */
   --font-display: "Baloo 2", system-ui, sans-serif;
@@ -34,18 +56,15 @@
   --font-mono: "JetBrains Mono", "Menlo", monospace;
 
   /* Radii */
-  --radius-card: 16px;
-  --radius-button: 14px;
   --radius-pill: 999px;
+  --radius-chip: 14px;
+  --radius-button: 18px;
+  --radius-card: 26px;
+  --radius-panel: 36px;
 
-  /* Spacing */
-  --space-4: 4px;
-  --space-6: 6px;
-  --space-9: 9px;
-  --space-12: 12px;
-  --space-16: 16px;
-  --space-20: 20px;
-  --space-24: 24px;
+  /* Layout */
+  --shell: 1160px;
+  --gutter: 24px;
 
   /* Motion */
   --ease-standard: cubic-bezier(0.215, 0.61, 0.355, 1);
@@ -64,7 +83,8 @@ body {
 body {
   font-family: var(--font-body);
   color: var(--body-2);
-  background: var(--board);
+  background: var(--cream);
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -80,24 +100,100 @@ h4 {
   font-family: var(--font-display);
   font-weight: 800;
   color: var(--ink);
-  margin: 0 0 var(--space-12);
+  margin: 0 0 12px;
   line-height: 1.15;
 }
 
 p {
   line-height: 1.7;
-  margin: 0 0 var(--space-16);
+  margin: 0 0 16px;
 }
 
 a {
-  color: var(--cyan-ink);
+  color: var(--cyan);
   text-decoration: none;
 }
 
 a:hover {
-  text-decoration: underline;
+  color: var(--cyan-deep);
 }
 
 button {
   font-family: var(--font-display);
+}
+
+input::placeholder {
+  color: var(--faint);
+}
+
+/* Shared primitives ------------------------------------------------------ */
+
+.shell {
+  max-width: var(--shell);
+  margin: 0 auto;
+  padding-inline: var(--gutter);
+}
+
+/* The chunky "pressed sticker" button used for every CTA in the design. */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 0;
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  border-radius: var(--radius-button);
+  padding: 16px 26px;
+  font-size: 17px;
+  transition: background 0.16s var(--ease-standard);
+}
+
+.btn--primary {
+  background: var(--cyan);
+  color: #ffffff;
+  box-shadow: 0 4px 0 var(--cyan-deep);
+}
+
+.btn--primary:hover {
+  background: var(--cyan-lit);
+  color: #ffffff;
+}
+
+.btn--ghost {
+  background: var(--surface);
+  color: var(--ink);
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 0 var(--edge);
+}
+
+.btn--ghost:hover {
+  background: var(--surface-hint);
+  color: var(--ink);
+}
+
+.btn--sm {
+  padding: 11px 18px;
+  font-size: 14px;
+  border-radius: var(--radius-chip);
+  box-shadow: 0 3px 0 var(--cyan-deep);
+}
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: var(--eyebrow);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

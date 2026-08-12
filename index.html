@@ -2,21 +2,30 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/brand/logo.svg" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <link rel="apple-touch-icon" href="/brand/logo_1024.png" />
+    <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="AI LAB — build increasingly powerful AI models, contain the incidents they cause. An idle AI research management game for iOS and Android." />
-    <meta name="theme-color" content="#E7F1F8" />
+    <meta name="theme-color" content="#F6F1E4" />
 
-    <meta property="og:title" content="AI LAB — Build Intelligence. Contain What You Create." />
-    <meta property="og:description" content="An idle AI research management game for iOS and Android. Train AI models, watch your lab grow, contain what you create." />
+    <!-- Everything between these markers is rewritten per route at build time
+         by scripts/prerender.mjs, from src/seo/. What's here is the dev-server
+         fallback and the home page's own head - edit src/seo/site.js, not
+         this block, or the two will drift. -->
+    <!--seo-->
+    <title>AI-LABZ - Build Intelligence. Contain What You Create.</title>
+    <meta name="description" content="AI-LABZ is an idle AI research management game for iPhone and Android. Build the lab, train the models, and contain what you create. Join the waitlist." />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="/brand/logo_1024.png" />
+    <meta property="og:site_name" content="AI-LABZ" />
+    <meta property="og:title" content="AI-LABZ - Build Intelligence. Contain What You Create." />
+    <meta property="og:description" content="An idle AI research management game for iPhone and Android. Train AI models, watch your lab grow, contain what you create." />
+    <meta property="og:image" content="/brand/mark-1024.png" />
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="AI LAB — Build Intelligence. Contain What You Create." />
-    <meta name="twitter:description" content="An idle AI research management game for iOS and Android." />
-    <meta name="twitter:image" content="/brand/logo_1024.png" />
+    <meta name="twitter:title" content="AI-LABZ - Build Intelligence. Contain What You Create." />
+    <meta name="twitter:description" content="An idle AI research management game for iPhone and Android." />
+    <meta name="twitter:image" content="/brand/mark-1024.png" />
+    <!--/seo-->
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -24,7 +33,6 @@
       href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
-    <title>AI LAB — Build Intelligence. Contain What You Create.</title>
   </head>
   <body>
     <div id="root"></div>

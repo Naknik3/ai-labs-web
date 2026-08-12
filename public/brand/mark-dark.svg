@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <clipPath id="rd"><rect width="512" height="512" rx="112"></rect></clipPath>
+  <g clip-path="url(#rd)">
+  <rect width="512" height="512" fill="#17122A"></rect>
+  <circle cx="256" cy="262" r="152" fill="#241D3E"></circle>
+  <path d="M120,372 L256,426 L392,372 L392,394 L256,452 L120,394 Z" fill="#C2996A"></path>
+  <path d="M256,318 L392,372 L256,426 L120,372 Z" fill="#92E0B4"></path>
+  <path d="M256,318 L392,372 L256,426 L120,372 Z" fill="none" stroke="#17BFE0" stroke-width="12" stroke-linejoin="round"></path>
+  <rect x="310" y="286" width="66" height="52" rx="20" fill="#17122A"></rect>
+  <rect x="328" y="302" width="30" height="16" rx="8" fill="#8FD8E8"></rect>
+  <rect x="196" y="150" width="120" height="40" rx="20" fill="#17122A"></rect>
+  <rect x="210" y="168" width="92" height="178" rx="30" fill="#17122A"></rect>
+  <rect x="232" y="204" width="48" height="20" rx="10" fill="#8FD8E8"></rect>
+  <rect x="232" y="242" width="48" height="20" rx="10" fill="#8FD8E8"></rect>
+  <rect x="232" y="280" width="48" height="20" rx="10" fill="#FFB020"></rect>
+  <rect x="248" y="104" width="16" height="50" rx="8" fill="#17122A"></rect>
+  <circle cx="256" cy="96" r="22" fill="#FF5C6E"></circle></g>
+</svg>

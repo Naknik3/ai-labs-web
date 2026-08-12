@@ -8,7 +8,7 @@ const FIRST = KEYFRAMES[0];
 /**
  * The full-bleed Home hero: the real, live AI LAB map scene edge-to-edge,
  * with the HUD chrome from the team's own design reference
- * (docs/design_handoff_ai_lab_light — LabHUD.dc.html / LabMap.dc.html)
+ * (docs/design_handoff_ai_lab_light - LabHUD.dc.html / LabMap.dc.html)
  * floating on top of it. `children` is the headline/CTA copy, overlaid
  * centered above the scene.
  */

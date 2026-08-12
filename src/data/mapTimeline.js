@@ -1,5 +1,5 @@
 // A scripted "time-lapse" of a lab growing from a single training cluster
-// into a fully annexed, fully built territory — then it loops. Every
+// into a fully annexed, fully built territory - then it loops. Every
 // building/sector/model key is real, taken from the shipped game
 // (buildings.dart, sectors.dart, map_src/lab-models.js). Credits/research
 // progress toward the exact values shown in the team's own design
@@ -21,7 +21,7 @@ export const KEYFRAMES = [
     threat: 3,
     credits: "0",
     research: "0",
-    toast: { tone: "ok", text: "Lab online — Training Cluster built" },
+    toast: { tone: "ok", text: "Lab online - Training Cluster built" },
     sectors: [],
     buildings: { training_cluster: 1 },
     models: [],
@@ -90,7 +90,7 @@ export const KEYFRAMES = [
     threat: 36,
     credits: "184.0K",
     research: "12.8K",
-    toast: { tone: "warn", text: "Containment drifting — vault load rising" },
+    toast: { tone: "warn", text: "Containment drifting - vault load rising" },
     sectors: ["north_ridge", "east_field", "south_basin", "deep_core"],
     buildings: {
       training_cluster: 7,
@@ -139,7 +139,7 @@ export const KEYFRAMES = [
     threat: 12,
     credits: "482.6K",
     research: "19.4K",
-    toast: { tone: "ok", text: "Threat contained — lab stable" },
+    toast: { tone: "ok", text: "Threat contained - lab stable" },
     sectors: [
       "north_ridge",
       "east_field",

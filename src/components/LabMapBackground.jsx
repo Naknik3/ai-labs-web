@@ -19,7 +19,7 @@ function loadScriptOnce(src) {
  * app loads in a WebView) as an ambient, non-interactive scene: a scripted
  * loop of the lab growing from one building into a full territory.
  *
- * Only one of these can be mounted at a time — the bundle boots a single
+ * Only one of these can be mounted at a time - the bundle boots a single
  * global `window.labMap` bound to whichever `#stage` element existed when
  * it first loaded.
  */
