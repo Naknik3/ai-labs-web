@@ -1,0 +1,103 @@
+/* Design tokens ported from frontend/lib/styles/design_tokens.dart
+   (AI LAB Flutter app) so the marketing site stays visually on-brand. */
+:root {
+  /* Accents */
+  --cyan: #17bfe0;
+  --cyan-deep: #0f9dbb;
+  --cyan-ink: #0f8fab;
+  --violet: #8b5cf6;
+  --violet-deep: #6f45d4;
+  --amber: #ff9a3c;
+  --amber-deep: #de7c22;
+  --green: #35c77a;
+  --green-deep: #27a863;
+  --red: #f2544b;
+  --red-deep: #d6413a;
+
+  /* Neutrals */
+  --ink: #1b2c3a;
+  --ink-2: #22333f;
+  --body: #5c7285;
+  --body-2: #33475a;
+  --muted: #6b8092;
+  --label: #8ca2b4;
+  --surface: #ffffff;
+  --surface-sunken: #f6fafc;
+  --board: #e7f1f8;
+  --border: #dce6ee;
+  --border-2: #e4edf2;
+  --edge: #cfdde8;
+
+  /* Type */
+  --font-display: "Baloo 2", system-ui, sans-serif;
+  --font-body: "Nunito", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Menlo", monospace;
+
+  /* Radii */
+  --radius-card: 16px;
+  --radius-button: 14px;
+  --radius-pill: 999px;
+
+  /* Spacing */
+  --space-4: 4px;
+  --space-6: 6px;
+  --space-9: 9px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+
+  /* Motion */
+  --ease-standard: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--body-2);
+  background: var(--board);
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  position: relative;
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  color: var(--ink);
+  margin: 0 0 var(--space-12);
+  line-height: 1.15;
+}
+
+p {
+  line-height: 1.7;
+  margin: 0 0 var(--space-16);
+}
+
+a {
+  color: var(--cyan-ink);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  font-family: var(--font-display);
+}
