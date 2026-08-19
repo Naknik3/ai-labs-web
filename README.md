@@ -20,26 +20,43 @@ stable.
 
 ## Brand assets
 
-`logo-2a/` is the master kit for the app mark ("2a - The Island") - SVG
-sources plus rendered PNGs, with the colour, geometry and usage rules in
-`logo-2a/README.md`. Everything the site serves is derived from it; regenerate
-from the masters rather than editing the copies in `public/`.
+The mark is **D1, "the caged mascot"** - the robot head gripping two cyan
+energy bars against a sun-ray backdrop. Its master is not in this repo: it lives
+in the app repo at `AI-labz/frontend/tool/build_icons.py`, which draws the mark
+from geometry constants (never resampling a PNG) and mirrors them into
+`AI-labz/frontend/assets/icon/svg/ai-labz-mark.svg`. Everything the site serves
+is derived from that; regenerate from the master rather than editing the copies
+in `public/`.
 
 | Served | Source | Use |
 |---|---|---|
-| `public/favicon.svg`, `public/favicon.ico` (16/32/48) | `svg/ai-labz-mark.svg` | browser tab |
-| `public/apple-touch-icon.png` (180) | `png/ios-appicon-1024.png` | iOS home screen - must stay **opaque and full-bleed**, iOS applies its own mask and composites transparent corners over black |
-| `public/brand/icon-192.png`, `icon-512.png` | rounded mark | `site.webmanifest`, `purpose: "any"` |
-| `public/brand/icon-maskable-512.png` | square mark | `site.webmanifest`, `purpose: "maskable"` |
-| `public/brand/mark-1024.png` | square mark | `og:image` / `twitter:image` |
-| `public/brand/mark{,-dark,-mono,-square}.svg` | as named | the kit, for reuse |
+| `public/favicon.svg`, `public/favicon.ico` (16/32/48) | `ai-labz-mark.svg`, rounded | browser tab |
+| `public/apple-touch-icon.png` (180) | `square()`, flattened | iOS home screen - must stay **opaque and full-bleed**, iOS applies its own mask and composites transparent corners over black |
+| `public/brand/icon-192.png`, `icon-512.png` | `clipped(_, "rounded")` | `site.webmanifest`, `purpose: "any"` |
+| `public/brand/icon-maskable-512.png` | `maskable()` - art inside the 80% safe circle | `site.webmanifest`, `purpose: "maskable"` |
+| `public/brand/mark-1024.png` | `square()`, flattened | `og:image` / `twitter:image` - opaque, because social cards render PNG alpha unpredictably |
+| `public/brand/mark{,-dark,-mono,-square}.svg` | the SVG masters | the kit, for reuse |
+
+Every PNG here was drawn natively at its final pixel size by importing the app
+repo's `build_icons.py` and calling `square()` / `clipped()` / `maskable()` at
+that size - not by downsampling the 1024 master - so the 16px ICO frame is as
+crisp as the geometry allows. Two of them are flattened onto the mark's own
+`#F6F1E4` ground rather than kept transparent, for the reasons in the table.
+
+This is a **manual step and there is no generator checked in here**: it needs
+the app repo on disk, which the build host does not have, so it could not be
+wired into `npm run build` anyway. When the mark changes, re-render these files
+from the app repo's master and commit the results.
 
 The in-page mark (header, footer, dark CTA) is **not** one of these files - it's
 inline SVG in `src/components/BrandMark.jsx`, mounted once as `<symbol>`s by
-`Layout` and referenced with `<use>`. Its geometry is the same master, so a
-change to the logo means editing that file too. The mark's own ground is
-`#F6F1E4`, identical to the `--cream` page surface - the tile edge you see in
-the header and footer is the inset ring in their CSS, not the icon.
+`Layout` and referenced with `<use>`. Its geometry is a hand-port of the same
+master, so a change to the logo means editing that file too. Note the clip path
+there is load-bearing: the cage bars overflow the 512 viewBox on purpose so
+their round caps fall outside the card, and without the clip they run flush to a
+square edge. The mark's own ground is `#F6F1E4`, identical to the `--cream` page
+surface - the tile edge you see in the header and footer is the inset ring in
+their CSS, not the icon.
 
 ## The 3D lab
 

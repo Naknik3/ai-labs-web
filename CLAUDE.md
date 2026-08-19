@@ -77,5 +77,5 @@ Design tokens in `src/tokens.css`, one CSS file per component/page. The whole vi
 
 - **The waitlist form posts for real** to Web3Forms (`api.web3forms.com/submit`), which emails each signup to the inbox owning `VITE_WAITLIST_KEY`. That key is public by design and belongs in the bundle. Unset, the form tells visitors to email support rather than silently dropping addresses - so it collects nothing until the key is set in the host's env.
 - **Orphaned from an earlier hero design, still on disk:** `src/components/HeroScene.{jsx,css}`, `src/components/LabMapBackground.{jsx,css}`, `src/data/mapTimeline.js`, `public/map/lab-map.bundle.js`. Nothing imports them.
-- `README.md` references `logo-2a/` and `AI-Labz Site.html` at the repo root; neither is present in the working tree.
+- `README.md` references `AI-Labz Site.html` at the repo root; it is not present in the working tree.
 - Most of the current work is uncommitted against `master` (the default branch for PRs is `main`).

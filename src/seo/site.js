@@ -15,7 +15,7 @@ export const SITE = {
   /* Square mark. Kept as `twitter:card = summary` (not summary_large_image)
      because a 1024² logo letterboxes badly in the wide card. */
   image: "/brand/mark-1024.png",
-  imageAlt: "The AI-LABZ island mark",
+  imageAlt: "The AI-LABZ mark: the lab mascot behind cyan cage bars",
   imageWidth: 1024,
   imageHeight: 1024,
   platforms: "iOS, Android",
