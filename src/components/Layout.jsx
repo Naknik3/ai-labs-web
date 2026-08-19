@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import Header from "./Header.jsx";
 import Footer from "./Footer.jsx";
 import { LabzMarkDefs } from "./BrandMark.jsx";
+import { initAnalytics, trackPageview } from "../lib/analytics.js";
 import "./Layout.css";
 
 export default function Layout({ children }) {
@@ -14,6 +15,11 @@ export default function Layout({ children }) {
     if (state?.scrollTo) return;
     window.scrollTo(0, 0);
   }, [pathname, state]);
+
+  useEffect(() => {
+    initAnalytics();
+    trackPageview(pathname);
+  }, [pathname]);
 
   return (
     <div className="site-shell">
