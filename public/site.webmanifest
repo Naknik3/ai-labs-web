@@ -1,7 +1,7 @@
 {
   "name": "AI-LABZ",
   "short_name": "AI-LABZ",
-  "description": "An idle AI research management game for iPhone and Android. Train AI models, watch your lab grow, contain what you create.",
+  "description": "An idle AI research management game, out now on iPhone. Train AI models, watch your lab grow, contain what you create.",
   "start_url": "/",
   "display": "standalone",
   "theme_color": "#F6F1E4",

@@ -1,10 +1,10 @@
 /* JSON-LD for each route, as one @graph per page so the nodes can reference
    each other by @id instead of repeating themselves.
  *
- * Deliberately absent: `offers`, `price` and `aggregateRating` on the game.
- * The app hasn't shipped, nothing is for sale and nobody has rated it -
- * inventing those is a manual-action risk, not just an inaccuracy. Add them
- * at launch, from the real store listing. */
+ * `offers` and `installUrl` on the game are taken from the live App Store
+ * listing - free to download, with in-app purchases. `aggregateRating` stays
+ * deliberately absent: we do not hold the rating data, and asserting one we
+ * cannot substantiate is a manual-action risk, not just an inaccuracy. */
 
 import { SITE, routeFor, absolute } from "./site.js";
 import { FAQ } from "./faq.js";
@@ -60,7 +60,15 @@ export function schemaFor(path, origin) {
       applicationCategory: "GameApplication",
       genre: ["Idle game", "Simulation", "Management"],
       operatingSystem: SITE.platforms,
-      gamePlatform: ["iPhone", "Android"],
+      gamePlatform: ["iPhone"],
+      installUrl: SITE.appStoreUrl,
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "USD",
+        availability: "https://schema.org/InStock",
+        url: SITE.appStoreUrl,
+      },
       playMode: "SinglePlayer",
       inLanguage: SITE.lang,
       publisher: { "@id": orgId },

@@ -23,8 +23,8 @@
 }
 
 .site-header__mark {
+  display: block;
   border-radius: 10px;
-  box-shadow: 0 0 0 1px var(--rule-2) inset;
   flex: none;
 }
 

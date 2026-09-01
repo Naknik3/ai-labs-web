@@ -433,8 +433,11 @@ lab-building {
   gap: 12px;
 }
 
+/* No corner radius here, unlike the header and footer: the CTA block's ground
+   is #17122A, the exact colour the mark is composited on, so the tile edge is
+   invisible and rounding it would only clip the orbital rings. */
 .cta__mark {
-  border-radius: 12px;
+  display: block;
   flex: none;
 }
 
@@ -457,6 +460,10 @@ lab-building {
   color: var(--dark-body);
   max-width: 460px;
   text-wrap: pretty;
+}
+
+.cta__store {
+  align-self: flex-start;
 }
 
 .cta__form {

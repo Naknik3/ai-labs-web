@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { LabzMark, Wordmark } from "./BrandMark.jsx";
 import SectionLink from "./SectionLink.jsx";
+import AppStoreButton from "./AppStoreButton.jsx";
 import "./Header.css";
 
 export default function Header() {
@@ -16,9 +17,7 @@ export default function Header() {
           <SectionLink id="play">How it plays</SectionLink>
           <SectionLink id="buildings">Buildings</SectionLink>
         </nav>
-        <SectionLink id="waitlist" className="btn btn--primary btn--sm">
-          Join the waitlist
-        </SectionLink>
+        <AppStoreButton className="btn btn--primary btn--sm">Get it on iPhone</AppStoreButton>
       </div>
     </header>
   );

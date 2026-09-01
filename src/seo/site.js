@@ -15,10 +15,17 @@ export const SITE = {
   /* Square mark. Kept as `twitter:card = summary` (not summary_large_image)
      because a 1024² logo letterboxes badly in the wide card. */
   image: "/brand/mark-1024.png",
-  imageAlt: "The AI-LABZ mark: the lab mascot behind cyan cage bars",
+  imageAlt: "The AI-LABZ mark: the ARC-7 specimen inside its orbital containment rings",
   imageWidth: 1024,
   imageHeight: 1024,
-  platforms: "iOS, Android",
+  /* Only what you can actually install today. The VideoGame node now carries
+     an `offers` with `availability: InStock`, so listing Android here would
+     assert an obtainable Android build that does not exist. Add it back the
+     day the Play listing goes live. */
+  platforms: "iOS",
+  /* The live App Store listing. Every link and every `installUrl` on the
+     site resolves to this one string. */
+  appStoreUrl: "https://apps.apple.com/us/app/ai-labz-build-your-tech-empire/id6800757844",
 };
 
 /* Every route the site serves. `indexable: false` keeps a page out of the
@@ -29,7 +36,7 @@ export const ROUTES = [
     path: "/",
     title: "AI-LABZ - Build Intelligence. Contain What You Create.",
     description:
-      "AI-LABZ is an idle AI research management game for iPhone and Android. Build the lab, train the models, and contain what you create. Join the waitlist.",
+      "AI-LABZ is an idle AI research management game, out now on iPhone with Android coming soon. Build the lab, train the models, and contain what you create.",
   },
   {
     path: "/privacy",

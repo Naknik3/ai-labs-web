@@ -31,8 +31,8 @@
 }
 
 .site-footer__mark {
+  display: block;
   border-radius: 8px;
-  box-shadow: 0 0 0 1px var(--rule-2) inset;
   flex: none;
 }
 

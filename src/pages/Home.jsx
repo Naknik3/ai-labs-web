@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import SectionLink from "../components/SectionLink.jsx";
+import AppStoreButton from "../components/AppStoreButton.jsx";
 import Seo from "../components/Seo.jsx";
 import { LabzMark, Wordmark } from "../components/BrandMark.jsx";
 import { FAQ } from "../seo/faq.js";
@@ -95,7 +96,7 @@ export default function Home() {
       <section id="top" className="shell hero">
         <div className="pill">
           <span className="pill__dot" style={{ background: "#35C77A" }} />
-          <span className="pill__label">COMING SOON ON iPHONE &amp; ANDROID</span>
+          <span className="pill__label">OUT NOW ON iPHONE · ANDROID COMING SOON</span>
         </div>
         <h1 className="hero__title">
           Build intelligence.
@@ -103,14 +104,12 @@ export default function Home() {
           Contain what you create.
         </h1>
         <p className="hero__lede">
-          An idle lab-management game for iPhone and Android. Ten buildings, ten upgrade tiers
+          An idle lab-management game, live now on iPhone. Ten buildings, ten upgrade tiers
           each, and one
           containment vault that will not stay quiet while you scale.
         </p>
         <div className="hero__actions">
-          <SectionLink id="waitlist" className="btn btn--primary">
-            Get early access
-          </SectionLink>
+          <AppStoreButton className="btn btn--primary" />
           <SectionLink id="buildings" className="btn btn--ghost">
             See the lab
           </SectionLink>
@@ -331,13 +330,15 @@ function Waitlist() {
       <div className="cta">
         <div className="cta__copy">
           <div className="cta__brand">
-            <LabzMark size={46} dark className="cta__mark" />
+            <LabzMark size={46} className="cta__mark" />
             <Wordmark dark />
           </div>
-          <h2 className="cta__title">Be in the first cohort of lab directors</h2>
+          <h2 className="cta__title">Play it now on iPhone</h2>
           <p className="cta__lede">
-            TestFlight invites go out in waves. One email when it&rsquo;s your turn, nothing else.
+            AI-LABZ is live on the App Store. Building for Android next - leave your email and
+            we&rsquo;ll let you know the day it lands.
           </p>
+          <AppStoreButton className="btn btn--primary cta__store" />
         </div>
 
         <div className="cta__form">
@@ -345,7 +346,7 @@ function Waitlist() {
             <div className="joined">
               <div className="joined__title">You&rsquo;re on the list</div>
               <div className="joined__body">
-                We&rsquo;ll mail {email} when your invite is ready.
+                We&rsquo;ll mail {email} the day AI-LABZ lands on Android.
               </div>
             </div>
           ) : (
@@ -369,14 +370,14 @@ function Waitlist() {
                 autoComplete="email"
               />
               <button type="submit" className="signup__submit" disabled={status === "sending"}>
-                {status === "sending" ? "Joining…" : "Join the waitlist"}
+                {status === "sending" ? "Joining…" : "Notify me for Android"}
               </button>
               {status === "error" ? (
                 <div className="signup__error" role="alert">
                   {error}
                 </div>
               ) : null}
-              <div className="signup__fine">iPhone · iOS 17+ · free with optional upgrades</div>
+              <div className="signup__fine">Android · free with optional upgrades</div>
             </form>
           )}
         </div>

@@ -20,43 +20,50 @@ stable.
 
 ## Brand assets
 
-The mark is **D1, "the caged mascot"** - the robot head gripping two cyan
-energy bars against a sun-ray backdrop. Its master is not in this repo: it lives
-in the app repo at `AI-labz/frontend/tool/build_icons.py`, which draws the mark
-from geometry constants (never resampling a PNG) and mirrors them into
-`AI-labz/frontend/assets/icon/svg/ai-labz-mark.svg`. Everything the site serves
-is derived from that; regenerate from the master rather than editing the copies
-in `public/`.
+The mark is **ARC-7, the contained specimen** - the dark polyhedral core inside
+two coral orbital rings. It replaced D1, "the caged mascot", and the swap is not
+a redraw: ARC-7 is a render out of the game's own 3D source, so unlike D1 there
+is **no vector master** and nothing here can draw the mark from geometry. Every
+file below is a resample of the 1024 master in the app repo's icon handoff
+(`icon-handoff/app_icon.png`), which also carries the composite recipe that
+produced it.
 
 | Served | Source | Use |
 |---|---|---|
-| `public/favicon.svg`, `public/favicon.ico` (16/32/48) | `ai-labz-mark.svg`, rounded | browser tab |
-| `public/apple-touch-icon.png` (180) | `square()`, flattened | iOS home screen - must stay **opaque and full-bleed**, iOS applies its own mask and composites transparent corners over black |
-| `public/brand/icon-192.png`, `icon-512.png` | `clipped(_, "rounded")` | `site.webmanifest`, `purpose: "any"` |
-| `public/brand/icon-maskable-512.png` | `maskable()` - art inside the 80% safe circle | `site.webmanifest`, `purpose: "maskable"` |
-| `public/brand/mark-1024.png` | `square()`, flattened | `og:image` / `twitter:image` - opaque, because social cards render PNG alpha unpredictably |
-| `public/brand/mark{,-dark,-mono,-square}.svg` | the SVG masters | the kit, for reuse |
+| `public/favicon.ico` (16/32/48), `public/favicon-96.png` | `app_icon.png`, rounded 22.37% | browser tab. There is no `favicon.svg` any more - nothing to draw one from |
+| `public/apple-touch-icon.png` (180) | `app_icon.png`, flattened | iOS home screen - must stay **opaque and full-bleed**, iOS applies its own mask and composites transparent corners over black |
+| `public/brand/icon-192.png`, `icon-512.png` | `app_icon.png`, rounded 22.37% | `site.webmanifest`, `purpose: "any"` |
+| `public/brand/icon-maskable-512.png` | `app_icon_foreground.png` on `#17122A` | `site.webmanifest`, `purpose: "maskable"`. The foreground file is art at 62% fill, inside the 80% safe circle; the full-bleed master is 94% fill and its rings would clip under a circular mask |
+| `public/brand/mark-1024.png` | `app_icon.png`, flattened | `og:image` / `twitter:image` - opaque, because social cards render PNG alpha unpredictably |
+| `public/brand/mark-256.png` | `app_icon.png`, flattened | the in-page mark in the header, footer and CTA. Square: the corner radius is CSS, per surface |
+| `public/brand/mark-round-1024.png`, `mark-mono-1024.png` | `app_icon.png` rounded, `app_icon_monochrome.png` | the kit, for reuse |
 
-Every PNG here was drawn natively at its final pixel size by importing the app
-repo's `build_icons.py` and calling `square()` / `clipped()` / `maskable()` at
-that size - not by downsampling the 1024 master - so the 16px ICO frame is as
-crisp as the geometry allows. Two of them are flattened onto the mark's own
-`#F6F1E4` ground rather than kept transparent, for the reasons in the table.
+Anything opaque is flattened onto the mark's own `#17122A` ground rather than
+kept transparent, for the reasons in the table.
 
-This is a **manual step and there is no generator checked in here**: it needs
-the app repo on disk, which the build host does not have, so it could not be
-wired into `npm run build` anyway. When the mark changes, re-render these files
-from the app repo's master and commit the results.
+`scripts/gen-icons.py` rebuilds every file in the table from the handoff:
 
-The in-page mark (header, footer, dark CTA) is **not** one of these files - it's
-inline SVG in `src/components/BrandMark.jsx`, mounted once as `<symbol>`s by
-`Layout` and referenced with `<use>`. Its geometry is a hand-port of the same
-master, so a change to the logo means editing that file too. Note the clip path
-there is load-bearing: the cage bars overflow the 512 viewBox on purpose so
-their round caps fall outside the card, and without the clip they run flush to a
-square edge. The mark's own ground is `#F6F1E4`, identical to the `--cream` page
-surface - the tile edge you see in the header and footer is the inset ring in
-their CSS, not the icon.
+```sh
+SRC=~/Downloads/icon-handoff python3 scripts/gen-icons.py   # needs Pillow
+```
+
+It is **deliberately not wired into `npm run build`** - it needs the handoff on
+disk, which the build host does not have. Run it by hand when the mark changes
+and commit the results.
+
+The handoff's own README flags that ARC-7 occupies only 635px of its 1200px
+source render, so the 1024 master is a ~1.6x upscale with slightly soft facet
+edges. Re-render at 2400px square from the 3D source and every file above can be
+rebuilt by re-running the script - there are no design decisions to redo.
+
+The in-page mark (header, footer, dark CTA) is `src/components/BrandMark.jsx`,
+which under D1 was a hand-ported inline `<symbol>` re-drawn as vector at any
+size. ARC-7 cannot be re-drawn, so it is now a plain `<img>` pointing at
+`mark-256.png` - one file for every surface, since a dark tile reads on both the
+cream page and the dark CTA block. The `<symbol>` defs and the `dark` prop are
+gone with it. Corner rounding stays where it always was, in each surface's own
+CSS; D1's inset ring does not, because it existed to give a cream-ground tile an
+edge against a cream page and ARC-7 defines itself.
 
 ## The 3D lab
 

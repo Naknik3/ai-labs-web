@@ -71,7 +71,7 @@ Two constraints the site inherits from this: paths are **root-absolute** (`/lab/
 
 ### Styling
 
-Design tokens in `src/tokens.css`, one CSS file per component/page. The whole visual language is flat `box-shadow: 0 Npx 0 <edge>` plus large radii - there are no blurred shadows. The in-page brand mark is inline SVG in `src/components/BrandMark.jsx`, mounted once as `<symbol>`s by `Layout` and referenced with `<use>`; it is *not* one of the files in `public/brand/`, so a logo change means editing both.
+Design tokens in `src/tokens.css`, one CSS file per component/page. The whole visual language is flat `box-shadow: 0 Npx 0 <edge>` plus large radii - there are no blurred shadows. The in-page brand mark is `src/components/BrandMark.jsx`, an `<img>` pointing at `/brand/mark-256.png` - the mark (ARC-7) is a 3D render with no vector source, so unlike the old caged mascot it cannot be inline SVG. Corner rounding is per-surface CSS, not baked into the file.
 
 ## Known state
 

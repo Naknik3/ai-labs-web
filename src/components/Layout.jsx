@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Header from "./Header.jsx";
 import Footer from "./Footer.jsx";
-import { LabzMarkDefs } from "./BrandMark.jsx";
 import { initAnalytics, trackPageview } from "../lib/analytics.js";
 import "./Layout.css";
 
@@ -23,7 +22,6 @@ export default function Layout({ children }) {
 
   return (
     <div className="site-shell">
-      <LabzMarkDefs />
       <Header />
       <main>{children}</main>
       <Footer />

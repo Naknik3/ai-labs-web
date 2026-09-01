@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { LabzMark, Wordmark } from "./BrandMark.jsx";
 import SectionLink from "./SectionLink.jsx";
+import AppStoreButton from "./AppStoreButton.jsx";
 import "./Footer.css";
 
 export default function Footer() {
@@ -17,8 +18,9 @@ export default function Footer() {
           <SectionLink id="play">How it plays</SectionLink>
           <SectionLink id="buildings">Buildings</SectionLink>
           <SectionLink id="faq">FAQ</SectionLink>
-          <SectionLink id="waitlist">Waitlist</SectionLink>
+          <SectionLink id="waitlist">Android waitlist</SectionLink>
         </nav>
+        <AppStoreButton className="btn btn--primary btn--sm">Get it on iPhone</AppStoreButton>
       </div>
 
       <div className="site-footer__row site-footer__row--legal">
