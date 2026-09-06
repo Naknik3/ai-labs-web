@@ -40,10 +40,10 @@ export const ROUTES = [
   },
   {
     path: "/privacy",
-    updated: "2026-08-12",
+    updated: "2026-09-06",
     title: "Privacy Policy - AI-LABZ",
     description:
-      "How AI-LABZ handles your data: no account, no login, just a random device token. What the game collects, why, and the choices you have.",
+      "How AI-LABZ handles your data: no account, no login, just a random device token. What the game collects, which third parties receive it, and the choices you have.",
   },
   {
     path: "/terms",
@@ -65,6 +65,13 @@ export const ROUTES = [
     title: "Restore Purchases - AI-LABZ",
     description:
       "How to restore AI-LABZ in-app purchases on iPhone and Android, and what to do if a purchase you made is missing from your lab.",
+  },
+  {
+    path: "/delete-data",
+    updated: "2026-09-06",
+    title: "Delete your data - AI-LABZ",
+    description:
+      "How to ask us to delete your AI-LABZ lab: the steps, what gets removed, and what the app stores and billing systems keep regardless.",
   },
   {
     path: "/404",
