@@ -1,5 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
+import {
+  isViewerReadyMessage,
+  MODEL_VIEWER_MESSAGE_SOURCE,
+} from "../lib/viewerHandshake.js";
 import "./ModelViewer.css";
 
 const VIEWER_LEVEL_MAX = 7;
@@ -9,21 +13,38 @@ export default function ModelViewer({ model }) {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    setReady(false);
-    const frame = frameRef.current;
-    const viewer = frame?.contentWindow?.modelViewer;
-    if (viewer?.setModel) {
+    function handleMessage(event) {
+      const frame = frameRef.current;
+      if (
+        isViewerReadyMessage(
+          event,
+          frame?.contentWindow,
+          MODEL_VIEWER_MESSAGE_SOURCE,
+        )
+      ) {
+        setReady(true);
+      }
+    }
+
+    window.addEventListener("message", handleMessage);
+    return () => window.removeEventListener("message", handleMessage);
+  }, []);
+
+  const applyModel = useCallback(() => {
+    const viewer = frameRef.current?.contentWindow?.modelViewer;
+    if (!viewer?.setModel) return;
+
+    try {
       viewer.setModel(model.key, Math.min(VIEWER_LEVEL_MAX, model.gen));
-      setReady(true);
+    } catch {
+      setReady(false);
     }
   }, [model]);
 
-  function handleLoad() {
-    const viewer = frameRef.current?.contentWindow?.modelViewer;
-    if (!viewer?.setModel) return;
-    viewer.setModel(model.key, Math.min(VIEWER_LEVEL_MAX, model.gen));
-    setReady(true);
-  }
+  useEffect(() => {
+    setReady(false);
+    applyModel();
+  }, [applyModel]);
 
   return (
     <div className="model-viewer">
@@ -38,7 +59,7 @@ export default function ModelViewer({ model }) {
         className="model-viewer__frame"
         src="/model-viewer/index.html"
         title={`${model.name} live 3D specimen`}
-        onLoad={handleLoad}
+        onLoad={applyModel}
       />
     </div>
   );

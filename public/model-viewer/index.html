@@ -20,5 +20,34 @@
       };
     </script>
     <script src="./model-viewer.bundle.js"></script>
+    <script>
+      // The parent must not hide the static image until WebGL is actually
+      // available. This matters on mobile Safari, where an iframe can finish
+      // loading even when the renderer cannot create a context.
+      (() => {
+        const source = "ai-labz-model-viewer";
+        const post = (type) => window.parent.postMessage({ source, type }, "*");
+        const canRender = () => {
+          const canvas = document.querySelector("canvas");
+          if (!canvas) return false;
+          try {
+            return Boolean(
+              canvas.getContext("webgl2") ||
+                canvas.getContext("webgl") ||
+                canvas.getContext("experimental-webgl"),
+            );
+          } catch {
+            return false;
+          }
+        };
+        const viewer = window.modelViewer;
+        const setModel = viewer.setModel;
+        viewer.setModel = function setModelWithStatus(...args) {
+          const result = setModel.apply(this, args);
+          window.setTimeout(() => post(canRender() ? "ready" : "failed"), 0);
+          return result;
+        };
+      })();
+    </script>
   </body>
 </html>

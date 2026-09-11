@@ -11,9 +11,12 @@ export default function BuildingViewer({ building, level }) {
   const applyBuilding = useCallback(() => {
     const viewer = frameRef.current?.contentWindow?.buildingViewer;
     if (!viewer?.setBuilding) return;
-    Promise.resolve(viewer.setBuilding(building.key, level, building.accent, tier)).then((ok) => {
-      if (ok !== false) setReady(true);
-    });
+    Promise.resolve()
+      .then(() => viewer.setBuilding(building.key, level, building.accent, tier))
+      .then((ok) => {
+        if (ok !== false) setReady(true);
+      })
+      .catch(() => setReady(false));
   }, [building, level, tier]);
 
   useEffect(() => {
