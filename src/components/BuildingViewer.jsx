@@ -5,23 +5,30 @@ import "./BuildingViewer.css";
 
 export default function BuildingViewer({ building, level, tier: selectedTier }) {
   const frameRef = useRef(null);
+  const requestRef = useRef(0);
   const [ready, setReady] = useState(false);
   const tier = selectedTier ?? tierForLevel(building, level);
 
   const applyBuilding = useCallback(() => {
+    const request = ++requestRef.current;
     const viewer = frameRef.current?.contentWindow?.buildingViewer;
     if (!viewer?.setBuilding) return;
     Promise.resolve()
       .then(() => viewer.setBuilding(building.key, level, building.accent, tier))
       .then((ok) => {
-        if (ok !== false) setReady(true);
+        if (request === requestRef.current && ok !== false) setReady(true);
       })
-      .catch(() => setReady(false));
+      .catch(() => {
+        if (request === requestRef.current) setReady(false);
+      });
   }, [building, level, tier]);
 
   useEffect(() => {
     setReady(false);
     applyBuilding();
+    return () => {
+      requestRef.current += 1;
+    };
   }, [applyBuilding]);
 
   return (
@@ -34,6 +41,7 @@ export default function BuildingViewer({ building, level, tier: selectedTier }) 
       />
       <iframe
         ref={frameRef}
+        key={`${building.key}-tier-${tier}`}
         className="building-viewer__frame"
         src="/building-viewer/index.html"
         title={`${building.name} live 3D building`}

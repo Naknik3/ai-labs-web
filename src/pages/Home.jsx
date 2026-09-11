@@ -9,7 +9,6 @@ import Seo from "../components/Seo.jsx";
 import { LabzMark, Wordmark } from "../components/BrandMark.jsx";
 import {
   BUILDINGS,
-  buildingImageForTier,
   levelForTier,
   tierCountFor,
   tierForLevel,
@@ -172,7 +171,7 @@ export default function Home() {
           <h2 className="section__title">Every upgrade rebuilds the building</h2>
           <p className="section__lede">
             From training halos to power plants, every system has its own silhouette and upgrade
-            path. Pick one and drag the level.
+            path. Pick one and drag across its visual tiers.
           </p>
         </div>
 
@@ -213,39 +212,23 @@ export default function Home() {
                   <span> / {tierCount}</span>
                 </div>
               </div>
-              <div
-                className="tier-toggle"
-                data-count={tierCount}
-                role="group"
-                aria-label={`${building.name} visual tiers`}
-              >
-                {Array.from({ length: tierCount }, (_, index) => {
-                  const optionTier = index + 1;
-                  return (
-                    <button
-                      key={optionTier}
-                      type="button"
-                      className={
-                        optionTier === tier ? "tier-toggle__button is-active" : "tier-toggle__button"
-                      }
-                      aria-pressed={optionTier === tier}
-                      onClick={() =>
-                        setBuildingTiers((current) => ({
-                          ...current,
-                          [building.key]: optionTier,
-                        }))
-                      }
-                    >
-                      <img
-                        className="tier-toggle__thumb"
-                        src={buildingImageForTier(building, optionTier)}
-                        alt=""
-                        aria-hidden="true"
-                      />
-                      <span>TIER {optionTier}</span>
-                    </button>
-                  );
-                })}
+              <input
+                type="range"
+                min="1"
+                step="1"
+                value={tier}
+                aria-label={`${building.name} visual tier`}
+                max={tierCount}
+                onChange={(e) =>
+                  setBuildingTiers((current) => ({
+                    ...current,
+                    [building.key]: Number(e.target.value),
+                  }))
+                }
+              />
+              <div className="tier-card__scale">
+                <span>1</span>
+                <span>{tierCount}</span>
               </div>
             </div>
           </div>
