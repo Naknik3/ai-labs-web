@@ -10,11 +10,11 @@ export const FAQ = [
   },
   {
     q: "What platforms is AI-LABZ on?",
-    a: "AI-LABZ is out now on iPhone, with Android in development. It is a mobile game - there is no desktop or console version planned.",
+    a: "AI-LABZ is out now on iPhone and Android. It is a mobile game - there is no desktop or console version planned.",
   },
   {
     q: "When does AI-LABZ come out?",
-    a: "It is live now on the App Store for iPhone. Android is in development with no public release date yet - join the waitlist on this page and we will email you when it is playable.",
+    a: "It is live now on the App Store for iPhone and on Google Play for Android. Use the store links on this page to start building your lab.",
   },
   {
     q: "Do I need an account to play?",

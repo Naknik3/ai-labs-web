@@ -148,16 +148,16 @@ function llms() {
 > ${routeFor("/").description}
 
 ${SITE.name} is an idle AI research management game. It is out now on the App Store for
-iPhone; the Android build is still in development. You build an island laboratory from
+iPhone and on Google Play for Android. You build an island laboratory from
 compute, power and cooling structures, convert compute into research, and convert research
-into AI models - each with its own behaviour, rarity and power draw. Ten building types, ten
-upgrade tiers each. The smarter a model becomes, the higher the containment threat, and a
+into AI models - each with its own behaviour, rarity and power draw. Sixteen building systems
+and sixteen named specimens. The smarter a model becomes, the higher the containment threat, and a
 breached vault takes the sector with it. The game runs without an account or login: a random
 device token identifies your lab.
 
-- Platforms: iPhone (released), Android (in development). Mobile only.
-- Status: live on the App Store, free to download with optional in-app purchases
-- Download: ${SITE.appStoreUrl}
+- Platforms: iPhone and Android. Mobile only.
+- Status: live on the App Store and Google Play, free to download with optional in-app purchases
+- Downloads: ${SITE.appStoreUrl} and ${SITE.googlePlayUrl}
 - Contact: ${SITE.email}
 
 ## Pages

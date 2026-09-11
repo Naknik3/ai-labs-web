@@ -2,28 +2,18 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import SectionLink from "../components/SectionLink.jsx";
 import AppStoreButton from "../components/AppStoreButton.jsx";
+import BuildingViewer from "../components/BuildingViewer.jsx";
+import GooglePlayButton from "../components/GooglePlayButton.jsx";
+import ModelViewer from "../components/ModelViewer.jsx";
 import Seo from "../components/Seo.jsx";
 import { LabzMark, Wordmark } from "../components/BrandMark.jsx";
+import { BUILDINGS, tierForLevel } from "../data/buildings.js";
+import { MODELS } from "../data/models.js";
 import { FAQ } from "../seo/faq.js";
 import loadLabAssets from "../lib/labAssets.js";
 import "./Home.css";
 
 const ORBIT_SPEED = 0.045;
-
-const BUILDINGS = [
-  { key: "server_farm", name: "Server Farm", cls: "COMPUTE", accent: "cyan" },
-  { key: "training_cluster", name: "Training Cluster", cls: "INTELLIGENCE", accent: "violet" },
-  { key: "containment_vault", name: "Containment Vault", cls: "CONTAINMENT", accent: "amber" },
-  { key: "research_lab", name: "Research Lab", cls: "SCIENCE", accent: "green" },
-  { key: "quantum_annealer", name: "Quantum Annealer", cls: "COMPUTE", accent: "violet" },
-  { key: "fusion_plant", name: "Fusion Plant", cls: "POWER", accent: "amber" },
-  { key: "signal_array", name: "Signal Array", cls: "COMPUTE", accent: "cyan" },
-  { key: "drone_bay", name: "Drone Bay", cls: "LOGISTICS", accent: "cyan" },
-  { key: "cryo_cooler", name: "Cryo Cooler", cls: "POWER", accent: "cyan" },
-  { key: "memory_silo", name: "Memory Silo", cls: "COMPUTE", accent: "cyan" },
-];
-
-const DOT = { cyan: "#17BFE0", violet: "#8B5CF6", amber: "#F5A623", green: "#2FB273" };
 
 const STEPS = [
   {
@@ -49,25 +39,12 @@ const STEPS = [
   },
 ];
 
-/* Waitlist delivery: Web3Forms relays each signup straight to the inbox that
-   owns the access key — no backend, no database here. The key is meant to be
-   public (it only authorises posting to that one form), which is why it ships
-   in the bundle as a VITE_ var. Unset, the form tells people to email us
-   rather than silently swallowing an address. */
-const WAITLIST_ENDPOINT = "https://api.web3forms.com/submit";
-const WAITLIST_KEY = import.meta.env.VITE_WAITLIST_KEY ?? "";
-const CONTACT_EMAIL = "ailabzsupport@gmail.com";
-
-function milestoneFor(level) {
-  if (level <= 2) return 1;
-  if (level <= 5) return 2;
-  if (level <= 8) return 3;
-  return 4;
-}
-
 export default function Home() {
   const [active, setActive] = useState(0);
-  const [level, setLevel] = useState(9);
+  const [buildingLevels, setBuildingLevels] = useState(() =>
+    Object.fromEntries(BUILDINGS.map((building) => [building.key, Math.min(9, building.maxLevel)])),
+  );
+  const [activeModel, setActiveModel] = useState(0);
   const [labReady, setLabReady] = useState(false);
   const { state } = useLocation();
 
@@ -89,6 +66,8 @@ export default function Home() {
   }, [state]);
 
   const building = BUILDINGS[active];
+  const level = buildingLevels[building.key];
+  const model = MODELS[activeModel];
 
   return (
     <div className="home">
@@ -96,7 +75,7 @@ export default function Home() {
       <section id="top" className="shell hero">
         <div className="pill">
           <span className="pill__dot" style={{ background: "#35C77A" }} />
-          <span className="pill__label">OUT NOW ON iPHONE · ANDROID COMING SOON</span>
+          <span className="pill__label">OUT NOW ON iPHONE · ANDROID</span>
         </div>
         <h1 className="hero__title">
           Build intelligence.
@@ -104,12 +83,13 @@ export default function Home() {
           Contain what you create.
         </h1>
         <p className="hero__lede">
-          An idle lab-management game, live now on iPhone. Ten buildings, ten upgrade tiers
-          each, and one
+          An idle lab-management game, live now on iPhone and Android. Sixteen building systems,
+          sixteen specimens, and one
           containment vault that will not stay quiet while you scale.
         </p>
         <div className="hero__actions">
           <AppStoreButton className="btn btn--primary" />
+          <GooglePlayButton className="btn btn--ghost" />
           <SectionLink id="buildings" className="btn btn--ghost">
             See the lab
           </SectionLink>
@@ -143,9 +123,9 @@ export default function Home() {
           <div className="scene__tag">LIVE IN-GAME RENDER</div>
         </div>
         <div className="scene-stats">
-          <div>10 buildings</div>
-          <div>40 structural upgrades</div>
-          <div>10 AI specimens</div>
+          <div>16 building systems</div>
+          <div>65 visual tiers</div>
+          <div>16 AI specimens</div>
           <div>Runs while you&rsquo;re away</div>
         </div>
       </section>
@@ -175,11 +155,11 @@ export default function Home() {
 
       <section id="buildings" className="shell section">
         <div className="section__head section__head--wide">
-          <div className="eyebrow">THE LAB</div>
+          <div className="eyebrow">THE LAB · {BUILDINGS.length} SYSTEMS</div>
           <h2 className="section__title">Every upgrade rebuilds the building</h2>
           <p className="section__lede">
-            Four visual milestones per building. A level 10 server farm isn&rsquo;t a bigger level
-            1 - it&rsquo;s a different structure. Pick one and drag the level.
+            From training halos to power plants, every system has its own silhouette and upgrade
+            path. Pick one and drag the level.
           </p>
         </div>
 
@@ -191,10 +171,10 @@ export default function Home() {
                 type="button"
                 aria-pressed={i === active}
                 className={i === active ? "lab-row is-active" : "lab-row"}
-                style={i === active ? { borderColor: DOT[b.accent] } : undefined}
+                style={i === active ? { borderColor: `var(--${b.accent})` } : undefined}
                 onClick={() => setActive(i)}
               >
-                <span className="lab-row__dot" style={{ background: DOT[b.accent] }} />
+                <span className="lab-row__dot" style={{ background: `var(--${b.accent})` }} />
                 <span className="lab-row__name">{b.name}</span>
                 <span className="lab-row__cls">{b.cls}</span>
               </button>
@@ -203,19 +183,11 @@ export default function Home() {
 
           <div className="lab__detail">
             <div className="building">
-              {labReady ? (
-                <lab-building
-                  asset={building.key}
-                  level={String(level)}
-                  accent={building.accent}
-                />
-              ) : (
-                <div className="scene__fallback" />
-              )}
+              <BuildingViewer building={building} level={level} />
               <div className="building__caption">
                 <div className="building__name">{building.name}</div>
                 <div className="building__meta">
-                  {building.cls} · MILESTONE {milestoneFor(level)} OF 4
+                  {building.cls} · TIER {tierForLevel(building, level)} OF {building.tierBreakpoints?.length ?? 4}
                 </div>
               </div>
             </div>
@@ -225,23 +197,77 @@ export default function Home() {
                 <div className="level-card__label">UPGRADE LEVEL</div>
                 <div className="level-card__value">
                   {level}
-                  <span> / 10</span>
+                  <span> / {building.maxLevel}</span>
                 </div>
               </div>
               <input
                 type="range"
                 min="1"
-                max="10"
                 step="1"
                 value={level}
                 aria-label="Upgrade level"
-                onChange={(e) => setLevel(Number(e.target.value))}
+                max={building.maxLevel}
+                onChange={(e) =>
+                  setBuildingLevels((current) => ({
+                    ...current,
+                    [building.key]: Number(e.target.value),
+                  }))
+                }
               />
               <div className="level-card__scale">
-                <span>1–2 shed</span>
-                <span>3–5 racks</span>
-                <span>6–8 hall</span>
-                <span>9–10 tower</span>
+                <span>1</span>
+                <span>{building.maxLevel}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="models" className="shell section">
+        <div className="section__head section__head--wide">
+          <div className="eyebrow">AI SPECIMENS · {MODELS.length} MODELS</div>
+          <h2 className="section__title">Meet what the lab creates</h2>
+          <p className="section__lede">
+            Train them, contain them, and learn what they become. Every specimen has a generation,
+            a class, and a reason not to leave it unattended.
+          </p>
+        </div>
+
+        <div className="lab model-browser">
+          <div className="lab__list" aria-label="AI models">
+            {MODELS.map((item, i) => (
+              <button
+                key={item.key}
+                type="button"
+                aria-pressed={i === activeModel}
+                className={i === activeModel ? "lab-row is-active" : "lab-row"}
+                onClick={() => setActiveModel(i)}
+              >
+                <span className={`model-row__swatch model-row__swatch--${item.rarity.toLowerCase()}`} />
+                <span className="lab-row__name">{item.name}</span>
+                <span className="lab-row__cls">G{item.gen}</span>
+              </button>
+            ))}
+          </div>
+
+          <div className="lab__detail">
+            <div className="model-preview">
+              <ModelViewer model={model} />
+              <div className="model-preview__caption">
+                <div className="model-preview__name">{model.name}</div>
+                <div className="model-preview__meta">
+                  GENERATION {model.gen} · {model.rarity}
+                </div>
+              </div>
+            </div>
+            <div className="model-card">
+              <div className="model-card__eyebrow">MODEL PROFILE</div>
+              <div className="model-card__title">{model.cls}</div>
+              <p className="model-card__body">{model.note}</p>
+              <div className="model-card__tags">
+                <span>GEN {model.gen}</span>
+                <span>{model.rarity}</span>
+                <span>AI SPECIMEN</span>
               </div>
             </div>
           </div>
@@ -267,119 +293,29 @@ export default function Home() {
         </div>
       </section>
 
-      <Waitlist />
+      <DownloadCta />
     </div>
   );
 }
 
-function Waitlist() {
-  const [email, setEmail] = useState("");
-  const [status, setStatus] = useState("idle"); // idle | sending | joined | error
-  const [error, setError] = useState("");
-
-  async function join(event) {
-    event.preventDefault();
-    if (status === "sending") return;
-    if (!/.+@.+\..+/.test(email)) {
-      setError("That address doesn't look right.");
-      setStatus("error");
-      return;
-    }
-    if (!WAITLIST_KEY) {
-      setError(`The waitlist isn't connected yet - email ${CONTACT_EMAIL} and we'll add you.`);
-      setStatus("error");
-      return;
-    }
-    /* Honeypot: only a bot autofilling every field ticks the hidden checkbox.
-       Test `.checked` — a checkbox's `.value` is the string "on" whether or
-       not it is ticked, so testing `.value` swallows every real signup. */
-    if (event.target.botcheck?.checked) {
-      setStatus("joined");
-      return;
-    }
-    setStatus("sending");
-    setError("");
-    try {
-      const response = await fetch(WAITLIST_ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          access_key: WAITLIST_KEY,
-          email,
-          source: "ai-labz-web",
-          botcheck: "",
-        }),
-      });
-      /* Web3Forms answers with {success, message} and uses 4xx for a bad or
-         missing key. Visitors get one plain sentence either way; the real
-         message goes to the console, where whoever set the key will look. */
-      const data = await response.json().catch(() => ({}));
-      if (!response.ok || data.success === false) {
-        throw new Error(data.message || `Signup failed (${response.status})`);
-      }
-      setStatus("joined");
-    } catch (err) {
-      console.error("[waitlist]", err);
-      setStatus("error");
-      setError(`Couldn't reach the waitlist. Try again, or email ${CONTACT_EMAIL}.`);
-    }
-  }
-
+function DownloadCta() {
   return (
-    <section id="waitlist" className="shell section">
+    <section id="download" className="shell section">
       <div className="cta">
         <div className="cta__copy">
           <div className="cta__brand">
             <LabzMark size={46} className="cta__mark" />
             <Wordmark dark />
           </div>
-          <h2 className="cta__title">Play it now on iPhone</h2>
+          <h2 className="cta__title">Play it now on iPhone and Android</h2>
           <p className="cta__lede">
-            AI-LABZ is live on the App Store. Building for Android next - leave your email and
-            we&rsquo;ll let you know the day it lands.
+            AI-LABZ is live on the App Store and Google Play. Build your lab, train your models,
+            and contain what you create.
           </p>
-          <AppStoreButton className="btn btn--primary cta__store" />
-        </div>
-
-        <div className="cta__form">
-          {status === "joined" ? (
-            <div className="joined">
-              <div className="joined__title">You&rsquo;re on the list</div>
-              <div className="joined__body">
-                We&rsquo;ll mail {email} the day AI-LABZ lands on Android.
-              </div>
-            </div>
-          ) : (
-            <form onSubmit={join} className="signup" noValidate>
-              {/* Honeypot: hidden from people and from screen readers, so a
-                  filled value means a bot walked the form. */}
-              <input
-                type="checkbox"
-                name="botcheck"
-                className="signup__botcheck"
-                tabIndex={-1}
-                autoComplete="off"
-                aria-hidden="true"
-              />
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="you@lab.com"
-                aria-label="Email address"
-                autoComplete="email"
-              />
-              <button type="submit" className="signup__submit" disabled={status === "sending"}>
-                {status === "sending" ? "Joining…" : "Notify me for Android"}
-              </button>
-              {status === "error" ? (
-                <div className="signup__error" role="alert">
-                  {error}
-                </div>
-              ) : null}
-              <div className="signup__fine">Android · free with optional upgrades</div>
-            </form>
-          )}
+          <div className="cta__stores">
+            <AppStoreButton className="btn btn--primary" />
+            <GooglePlayButton className="btn btn--ghost cta__play" />
+          </div>
         </div>
       </div>
     </section>

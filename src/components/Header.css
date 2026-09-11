@@ -33,6 +33,7 @@
   font-size: 22px;
   font-weight: 800;
   letter-spacing: -0.02em;
+  white-space: nowrap;
   color: var(--ink);
 }
 
@@ -68,7 +69,13 @@
   color: var(--ink);
 }
 
-@media (max-width: 620px) {
+.site-header__stores {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+@media (max-width: 900px) {
   .site-header__nav {
     display: none;
   }

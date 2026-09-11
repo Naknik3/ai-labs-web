@@ -1,10 +1,11 @@
 /* JSON-LD for each route, as one @graph per page so the nodes can reference
    each other by @id instead of repeating themselves.
  *
- * `offers` and `installUrl` on the game are taken from the live App Store
- * listing - free to download, with in-app purchases. `aggregateRating` stays
- * deliberately absent: we do not hold the rating data, and asserting one we
- * cannot substantiate is a manual-action risk, not just an inaccuracy. */
+ * `offers` and `installUrl` on the game are taken from the live App Store and
+ * Google Play listings - free to download, with in-app purchases.
+ * `aggregateRating` stays deliberately absent: we do not hold the rating
+ * data, and asserting one we cannot substantiate is a manual-action risk, not
+ * just an inaccuracy. */
 
 import { SITE, routeFor, absolute } from "./site.js";
 import { FAQ } from "./faq.js";
@@ -60,15 +61,24 @@ export function schemaFor(path, origin) {
       applicationCategory: "GameApplication",
       genre: ["Idle game", "Simulation", "Management"],
       operatingSystem: SITE.platforms,
-      gamePlatform: ["iPhone"],
-      installUrl: SITE.appStoreUrl,
-      offers: {
-        "@type": "Offer",
-        price: "0",
-        priceCurrency: "USD",
-        availability: "https://schema.org/InStock",
-        url: SITE.appStoreUrl,
-      },
+      gamePlatform: ["iPhone", "Android"],
+      installUrl: [SITE.appStoreUrl, SITE.googlePlayUrl],
+      offers: [
+        {
+          "@type": "Offer",
+          price: "0",
+          priceCurrency: "USD",
+          availability: "https://schema.org/InStock",
+          url: SITE.appStoreUrl,
+        },
+        {
+          "@type": "Offer",
+          price: "0",
+          priceCurrency: "USD",
+          availability: "https://schema.org/InStock",
+          url: SITE.googlePlayUrl,
+        },
+      ],
       playMode: "SinglePlayer",
       inLanguage: SITE.lang,
       publisher: { "@id": orgId },

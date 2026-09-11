@@ -1,0 +1,31 @@
+.model-viewer {
+  position: absolute;
+  inset: 0;
+}
+
+.model-viewer__frame,
+.model-viewer__fallback {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.model-viewer__frame {
+  z-index: 1;
+  background: transparent;
+}
+
+.model-viewer__fallback {
+  z-index: 0;
+  object-fit: contain;
+  padding: 12px 34px 24px;
+  opacity: 1;
+  transition: opacity 0.2s var(--ease-standard);
+}
+
+.model-viewer__fallback.is-hidden {
+  opacity: 0;
+}

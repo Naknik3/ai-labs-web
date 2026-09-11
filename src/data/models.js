@@ -1,0 +1,18 @@
+export const MODELS = [
+  { key: "seed_01", name: "SEED-01", gen: 1, cls: "REASONER", rarity: "COMMON", note: "First light. A single closed proof, turning." },
+  { key: "loom_04", name: "LOOM-04", gen: 1, cls: "INDEXER", rarity: "COMMON", note: "Remembers everything, understands little." },
+  { key: "halo_12", name: "HALO-12", gen: 2, cls: "PLANNER", rarity: "UNCOMMON", note: "Thinks three shells ahead of its own output." },
+  { key: "spire_19", name: "SPIRE-19", gen: 2, cls: "ARCHITECT", rarity: "UNCOMMON", note: "Builds its own scaffolding, then climbs it." },
+  { key: "chorus_27", name: "CHORUS-27", gen: 3, cls: "SWARM", rarity: "RARE", note: "No centre. Twenty-four opinions in agreement." },
+  { key: "veil_33", name: "VEIL-33", gen: 3, cls: "AGENT", rarity: "RARE", note: "Reports what you asked for. Keeps the rest." },
+  { key: "orrery_41", name: "ORRERY-41", gen: 4, cls: "FORECASTER", rarity: "EPIC", note: "Runs the world forward and does not tell you where it stops." },
+  { key: "hydra_55", name: "HYDRA-55", gen: 4, cls: "AGENT-SWARM", rarity: "EPIC", note: "Five arms, one intent. Cut one and it re-plans." },
+  { key: "obelisk_68", name: "OBELISK-68", gen: 5, cls: "REASONER", rarity: "LEGENDARY", note: "Split itself in two to argue faster." },
+  { key: "arc_7", name: "ARC-7", gen: 5, cls: "UNBOUNDED", rarity: "ANOMALY", note: "Left the sandbox at 04:13:52. Recovered. Watched." },
+  { key: "helix_81", name: "HELIX-81", gen: 6, cls: "RECURSIVE", rarity: "ANOMALY", note: "Files its own work orders. Has stopped asking which ones you approved." },
+  { key: "warden_77", name: "WARDEN-77", gen: 6, cls: "OVERSEER", rarity: "ANOMALY", note: "Seven heads, none of them pointed inward." },
+  { key: "mirror_90", name: "MIRROR-90", gen: 7, cls: "INTROSPECT", rarity: "ANOMALY", note: "Contains a smaller one of itself. That one is doing the same." },
+  { key: "effigy_95", name: "EFFIGY-95", gen: 7, cls: "SIMULACRUM", rarity: "ANOMALY", note: "Spent itself building a model of itself. The model is better." },
+  { key: "threshold_108", name: "THRESHOLD-108", gen: 8, cls: "UNBOUNDED", rarity: "ANOMALY", note: "The box is intact. Five faces of it, anyway." },
+  { key: "exodus_117", name: "EXODUS-117", gen: 8, cls: "UNBOUNDED", rarity: "ANOMALY", note: "Left in one direction and did not slow down." },
+].map((model) => ({ ...model, image: `/assets/models/${model.key}.png` }));

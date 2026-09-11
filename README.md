@@ -8,8 +8,8 @@ the App Store and Play Console link to. Meant to be hosted as a static site
 
 - `/` - landing page, ported 1:1 from the **"AI-Labz Site" design handoff**
   (`AI-Labz Site.html`, kept at the repo root as the visual reference):
-  hero, live 3D lab scene, "how it plays", the building browser with its
-  upgrade-level slider, and the waitlist CTA.
+  hero, live 3D lab scene, "how it plays", the 16-building browser, the
+  16-specimen browser, and the store download CTA.
 - `/privacy` - Privacy Policy.
 - `/terms` - Terms of Service.
 - `/children-safety` - Children's Safety Standards (CSAE).
@@ -91,35 +91,12 @@ changes are performance (pixel-ratio cap, half-rate shadow pass, offscreen
 gating, no `preserveDrawingBuffer`) and a geometry-disposal fix in
 `<lab-building>`'s rebuild path.
 
-## Waitlist form
+## Store links
 
-The handoff's signup was a visual mock - it flipped to a success state without
-sending anything. Here it POSTs `{"email": "...", "source": "ai-labz-web"}` to
-**Web3Forms**, which relays each signup to the inbox that owns the access key.
-No backend, no database, no dashboard - the address arrives as an email.
-
-Setup is one step: get a free key at <https://web3forms.com> for
-`ailabzsupport@gmail.com`, then set `VITE_WAITLIST_KEY` (see `.env.example`)
-locally and in the host's environment variables. The key is public by design -
-it only authorises posting to that one form - so it ships in the bundle like
-any other `VITE_` var.
-
-**The key decides where signups land.** Web3Forms delivers to whichever inbox
-the key was generated for; `email` in the payload is a reserved field that only
-sets reply-to, and the contact address shown on the site is unrelated. Redirect
-signups by generating a new key, not by editing code. If mail never arrives,
-check the key was issued to the inbox you're watching - the key itself is
-delivered there by email, so a missing key email means a wrong or blocked
-address.
-
-**With the key unset the form tells visitors to email us instead** - it never
-silently drops an address, but it isn't collecting any either. Free tier is
-250 submissions/month.
-
-The form carries a `botcheck` honeypot, hidden off-screen rather than with
-`display: none` (which bots test for); Web3Forms discards any submission that
-arrives with it filled. Provider errors - a wrong or missing key - are logged
-to the console, while visitors get one plain "try again, or email us" line.
+The landing page, header, download CTA, and footer link directly to the live
+App Store and Google Play listings. Both URLs are centralized in
+`src/seo/site.js` so the visible buttons and generated structured data cannot
+drift apart.
 
 ## SEO, AEO and GEO
 
@@ -163,13 +140,12 @@ Preview deploys (`VERCEL_ENV != production`) get `noindex` and a
 That's a decision, not an oversight: being quotable in AI answers is the point.
 Flip them to `Disallow: /` in `AI_AGENTS` handling if that ever changes.
 
-Deliberately **not** in the schema: `offers`, `price`, `aggregateRating`. The
-app hasn't shipped, nothing is for sale and nobody has rated it - inventing
-those risks a manual action. Add them at launch from the real store listing.
+The schema includes `offers` and `installUrl` for the live App Store and Google
+Play listings. `aggregateRating` remains absent because we do not hold rating
+data and should not assert one we cannot substantiate.
 
 ## Before this goes live
 
-- Set `VITE_WAITLIST_KEY` (or the waitlist collects nothing).
 - Set `SITE_URL` once the domain is attached, or confirm Vercel's
   `VERCEL_PROJECT_PRODUCTION_URL` is the host you want canonical. The build
   prints the origin it used and warns when it falls back to the placeholder.

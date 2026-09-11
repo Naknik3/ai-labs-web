@@ -75,7 +75,7 @@ Design tokens in `src/tokens.css`, one CSS file per component/page. The whole vi
 
 ## Known state
 
-- **The waitlist form posts for real** to Web3Forms (`api.web3forms.com/submit`), which emails each signup to the inbox owning `VITE_WAITLIST_KEY`. That key is public by design and belongs in the bundle. Unset, the form tells visitors to email support rather than silently dropping addresses - so it collects nothing until the key is set in the host's env.
+- **The store links are live** on both iPhone and Android. The App Store and Google Play URLs live in `src/seo/site.js`, which feeds the visible buttons and structured data.
 - **Orphaned from an earlier hero design, still on disk:** `src/components/HeroScene.{jsx,css}`, `src/components/LabMapBackground.{jsx,css}`, `src/data/mapTimeline.js`, `public/map/lab-map.bundle.js`. Nothing imports them.
 - `README.md` references `AI-Labz Site.html` at the repo root; it is not present in the working tree.
 - Most of the current work is uncommitted against `master` (the default branch for PRs is `main`).

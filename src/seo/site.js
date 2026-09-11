@@ -18,14 +18,11 @@ export const SITE = {
   imageAlt: "The AI-LABZ mark: the ARC-7 specimen inside its orbital containment rings",
   imageWidth: 1024,
   imageHeight: 1024,
-  /* Only what you can actually install today. The VideoGame node now carries
-     an `offers` with `availability: InStock`, so listing Android here would
-     assert an obtainable Android build that does not exist. Add it back the
-     day the Play listing goes live. */
-  platforms: "iOS",
-  /* The live App Store listing. Every link and every `installUrl` on the
-     site resolves to this one string. */
+  platforms: "iOS, Android",
+  /* The live store listings. Every link and every `installUrl` on the site
+     resolves to one of these strings. */
   appStoreUrl: "https://apps.apple.com/us/app/ai-labz-build-your-tech-empire/id6800757844",
+  googlePlayUrl: "https://play.google.com/store/apps/details?id=com.ailab.aiLab",
 };
 
 /* Every route the site serves. `indexable: false` keeps a page out of the
@@ -36,7 +33,7 @@ export const ROUTES = [
     path: "/",
     title: "AI-LABZ - Build Intelligence. Contain What You Create.",
     description:
-      "AI-LABZ is an idle AI research management game, out now on iPhone with Android coming soon. Build the lab, train the models, and contain what you create.",
+      "AI-LABZ is an idle AI research management game, out now on iPhone and Android. Build the lab, train the models, and contain what you create.",
   },
   {
     path: "/privacy",
