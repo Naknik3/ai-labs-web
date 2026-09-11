@@ -24,7 +24,7 @@ Two things about those commands:
 
 ## Architecture
 
-React 19 + Vite SPA, client-routed with react-router, prerendered to static HTML at build time. Five real routes plus a 404; four of them are the legal URLs submitted to the App Store and Play Console (`/privacy`, `/terms`, `/children-safety`, `/restore-purchases`) - **keep those paths stable.**
+React 19 + Vite SPA, client-routed with react-router, prerendered to static HTML at build time. Six real routes plus a 404; the legal URLs submitted to the App Store and Play Console are `/privacy`, `/terms`, `/children-safety`, `/restore-purchases`, and `/delete-data` - **keep those paths stable.**
 
 ### The build produces static pages, not an SPA shell
 
@@ -69,6 +69,8 @@ Keep `three` pinned at `0.184.0` (the version the bundle was authored against) u
 
 Two constraints the site inherits from this: paths are **root-absolute** (`/lab/…`, `/vendor/three/…`), so a subpath deploy breaks the scene; and the host must rewrite unknown paths to `index.html` (or serve `dist/404.html`) for client routing to work.
 
+The building preview is a separate Three.js iframe at `public/building-viewer/`. Keep the iframe mounted while changing tiers so its in-memory GLB cache survives; `src/components/BuildingViewer.jsx` uses a request generation guard so stale async loads cannot reveal the wrong building. The PNG is a first-load/error fallback, not the normal steady-state view. Building assets are 16 systems and 65 visual tiers: four tiers for standard systems and five for Power Plant.
+
 ### Styling
 
 Design tokens in `src/tokens.css`, one CSS file per component/page. The whole visual language is flat `box-shadow: 0 Npx 0 <edge>` plus large radii - there are no blurred shadows. The in-page brand mark is `src/components/BrandMark.jsx`, an `<img>` pointing at `/brand/mark-256.png` - the mark (ARC-7) is a 3D render with no vector source, so unlike the old caged mascot it cannot be inline SVG. Corner rounding is per-surface CSS, not baked into the file.
@@ -76,6 +78,8 @@ Design tokens in `src/tokens.css`, one CSS file per component/page. The whole vi
 ## Known state
 
 - **The store links are live** on both iPhone and Android. The App Store and Google Play URLs live in `src/seo/site.js`, which feeds the visible buttons and structured data.
+- **Production deploys from `main`** to `https://www.ai-labz.xyz`. After pushing a website change, verify the live response with `curl` and hard-refresh the browser if an old hashed bundle is still displayed.
+- **Focused verification:** use `npx oxlint src/ scripts/` for source signal, `npm run build` for the Vite/prerender output, and `npm run preview:static` for real static-host behavior. The build may log a Vite WebSocket `EPERM` warning when another dev server is running; the command still exits successfully if prerendering completes.
 - **Orphaned from an earlier hero design, still on disk:** `src/components/HeroScene.{jsx,css}`, `src/components/LabMapBackground.{jsx,css}`, `src/data/mapTimeline.js`, `public/map/lab-map.bundle.js`. Nothing imports them.
 - `README.md` references `AI-Labz Site.html` at the repo root; it is not present in the working tree.
-- Most of the current work is uncommitted against `master` (the default branch for PRs is `main`).
+- `AGENTS.md` may be present as local session guidance and should not be included in commits unless explicitly requested.
