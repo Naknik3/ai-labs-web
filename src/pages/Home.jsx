@@ -7,7 +7,13 @@ import GooglePlayButton from "../components/GooglePlayButton.jsx";
 import ModelViewer from "../components/ModelViewer.jsx";
 import Seo from "../components/Seo.jsx";
 import { LabzMark, Wordmark } from "../components/BrandMark.jsx";
-import { BUILDINGS, tierForLevel } from "../data/buildings.js";
+import {
+  BUILDINGS,
+  buildingImageForTier,
+  levelForTier,
+  tierCountFor,
+  tierForLevel,
+} from "../data/buildings.js";
 import { MODELS } from "../data/models.js";
 import { FAQ } from "../seo/faq.js";
 import loadLabAssets from "../lib/labAssets.js";
@@ -41,8 +47,13 @@ const STEPS = [
 
 export default function Home() {
   const [active, setActive] = useState(0);
-  const [buildingLevels, setBuildingLevels] = useState(() =>
-    Object.fromEntries(BUILDINGS.map((building) => [building.key, Math.min(9, building.maxLevel)])),
+  const [buildingTiers, setBuildingTiers] = useState(() =>
+    Object.fromEntries(
+      BUILDINGS.map((building) => [
+        building.key,
+        tierForLevel(building, Math.min(9, building.maxLevel)),
+      ]),
+    ),
   );
   const [activeModel, setActiveModel] = useState(0);
   const [labReady, setLabReady] = useState(false);
@@ -66,7 +77,9 @@ export default function Home() {
   }, [state]);
 
   const building = BUILDINGS[active];
-  const level = buildingLevels[building.key];
+  const tier = buildingTiers[building.key] ?? 1;
+  const tierCount = tierCountFor(building);
+  const level = levelForTier(building, tier);
   const model = MODELS[activeModel];
 
   return (
@@ -183,40 +196,56 @@ export default function Home() {
 
           <div className="lab__detail">
             <div className="building">
-              <BuildingViewer building={building} level={level} />
+              <BuildingViewer building={building} level={level} tier={tier} />
               <div className="building__caption">
                 <div className="building__name">{building.name}</div>
                 <div className="building__meta">
-                  {building.cls} · TIER {tierForLevel(building, level)} OF {building.tierBreakpoints?.length ?? 4}
+                  {building.cls} · TIER {tier} OF {tierCount}
                 </div>
               </div>
             </div>
 
-            <div className="level-card">
-              <div className="level-card__head">
-                <div className="level-card__label">UPGRADE LEVEL</div>
-                <div className="level-card__value">
-                  {level}
-                  <span> / {building.maxLevel}</span>
+            <div className="tier-card">
+              <div className="tier-card__head">
+                <div className="tier-card__label">VISUAL TIER</div>
+                <div className="tier-card__value">
+                  {tier}
+                  <span> / {tierCount}</span>
                 </div>
               </div>
-              <input
-                type="range"
-                min="1"
-                step="1"
-                value={level}
-                aria-label="Upgrade level"
-                max={building.maxLevel}
-                onChange={(e) =>
-                  setBuildingLevels((current) => ({
-                    ...current,
-                    [building.key]: Number(e.target.value),
-                  }))
-                }
-              />
-              <div className="level-card__scale">
-                <span>1</span>
-                <span>{building.maxLevel}</span>
+              <div
+                className="tier-toggle"
+                data-count={tierCount}
+                role="group"
+                aria-label={`${building.name} visual tiers`}
+              >
+                {Array.from({ length: tierCount }, (_, index) => {
+                  const optionTier = index + 1;
+                  return (
+                    <button
+                      key={optionTier}
+                      type="button"
+                      className={
+                        optionTier === tier ? "tier-toggle__button is-active" : "tier-toggle__button"
+                      }
+                      aria-pressed={optionTier === tier}
+                      onClick={() =>
+                        setBuildingTiers((current) => ({
+                          ...current,
+                          [building.key]: optionTier,
+                        }))
+                      }
+                    >
+                      <img
+                        className="tier-toggle__thumb"
+                        src={buildingImageForTier(building, optionTier)}
+                        alt=""
+                        aria-hidden="true"
+                      />
+                      <span>TIER {optionTier}</span>
+                    </button>
+                  );
+                })}
               </div>
             </div>
           </div>

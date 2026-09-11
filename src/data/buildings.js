@@ -60,11 +60,6 @@ export const BUILDINGS = [
     accent: "violet",
     maxLevel: 10,
     assetStem: "fusing_bench",
-    tierBreakpoints: [
-      [1, 3],
-      [4, 6],
-      [7, 10],
-    ],
   },
   {
     key: "research_lab",
@@ -185,6 +180,21 @@ export function tierForLevel(building, level) {
   return breakpoints.findIndex(([, max]) => safeLevel <= max) + 1;
 }
 
+export function tierCountFor(building) {
+  return (building.tierBreakpoints ?? DEFAULT_TIER_BREAKPOINTS).length;
+}
+
+export function levelForTier(building, tier) {
+  const breakpoints = building.tierBreakpoints ?? DEFAULT_TIER_BREAKPOINTS;
+  const safeTier = Math.max(1, Math.min(breakpoints.length, Number(tier) || 1));
+  return breakpoints[safeTier - 1][0];
+}
+
+export function buildingImageForTier(building, tier) {
+  const safeTier = Math.max(1, Math.min(tierCountFor(building), Number(tier) || 1));
+  return `/assets/buildings/${building.assetStem}_t${safeTier}.png`;
+}
+
 export function buildingImageFor(building, level) {
-  return `/assets/buildings/${building.assetStem}_t${tierForLevel(building, level)}.png`;
+  return buildingImageForTier(building, tierForLevel(building, level));
 }

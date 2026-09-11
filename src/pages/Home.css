@@ -365,7 +365,7 @@ lab-building {
   color: var(--label);
 }
 
-.level-card {
+.tier-card {
   background: var(--surface);
   border: 1px solid var(--border);
   box-shadow: 0 4px 0 var(--edge);
@@ -376,44 +376,81 @@ lab-building {
   gap: 12px;
 }
 
-.level-card__head {
+.tier-card__head {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   gap: 12px;
 }
 
-.level-card__label {
+.tier-card__label {
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.14em;
   color: var(--label);
 }
 
-.level-card__value {
+.tier-card__value {
   font-family: var(--font-display);
   font-size: 26px;
   font-weight: 800;
   color: var(--cyan);
 }
 
-.level-card__value span {
+.tier-card__value span {
   font-size: 15px;
   color: var(--faint);
 }
 
-.level-card input[type="range"] {
-  width: 100%;
-  accent-color: var(--cyan);
-  height: 26px;
+.tier-toggle {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
 }
 
-.level-card__scale {
-  display: flex;
-  justify-content: space-between;
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--faint);
+.tier-toggle[data-count="3"] {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.tier-toggle[data-count="5"] {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.tier-toggle__button {
+  min-width: 0;
+  padding: 8px 4px 7px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface-hint);
+  color: var(--label);
+  box-shadow: 0 2px 0 var(--edge);
+  cursor: pointer;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  transition: background 0.16s var(--ease-standard), border-color 0.16s var(--ease-standard),
+    color 0.16s var(--ease-standard), transform 0.16s var(--ease-standard);
+}
+
+.tier-toggle__button:hover {
+  border-color: var(--cyan);
+  color: var(--ink);
+  transform: translateY(-1px);
+}
+
+.tier-toggle__button.is-active {
+  border-color: var(--cyan);
+  background: #eafaff;
+  color: var(--cyan-ink);
+  box-shadow: 0 3px 0 var(--cyan-deep);
+}
+
+.tier-toggle__thumb {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: contain;
+  margin-bottom: 4px;
 }
 
 .model-row__swatch {

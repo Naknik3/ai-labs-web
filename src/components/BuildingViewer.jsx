@@ -1,12 +1,12 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
-import { buildingImageFor, tierForLevel } from "../data/buildings.js";
+import { buildingImageForTier, tierForLevel } from "../data/buildings.js";
 import "./BuildingViewer.css";
 
-export default function BuildingViewer({ building, level }) {
+export default function BuildingViewer({ building, level, tier: selectedTier }) {
   const frameRef = useRef(null);
   const [ready, setReady] = useState(false);
-  const tier = tierForLevel(building, level);
+  const tier = selectedTier ?? tierForLevel(building, level);
 
   const applyBuilding = useCallback(() => {
     const viewer = frameRef.current?.contentWindow?.buildingViewer;
@@ -28,7 +28,7 @@ export default function BuildingViewer({ building, level }) {
     <div className="building-viewer">
       <img
         className={ready ? "building-viewer__fallback is-hidden" : "building-viewer__fallback"}
-        src={buildingImageFor(building, level)}
+        src={buildingImageForTier(building, tier)}
         alt=""
         aria-hidden="true"
       />
