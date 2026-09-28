@@ -97,40 +97,12 @@ lab-building {
   }
 }
 
-.scene__fallback {
+.scene__video {
   position: absolute;
   inset: 0;
-}
-
-.scene__risers {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  font-family: var(--font-display);
-  font-weight: 800;
-}
-
-.riser {
-  position: absolute;
-  font-size: clamp(13px, 1.4vw, 20px);
-  text-shadow:
-    0 1px 0 #fff,
-    0 0 8px #fff;
-  animation: labz-rise 3.6s ease-out infinite;
-}
-
-@keyframes labz-rise {
-  0% {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  25% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(-26px);
-  }
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .scene__tag {

@@ -16,10 +16,7 @@ import {
 } from "../data/buildings.js";
 import { MODELS } from "../data/models.js";
 import { FAQ } from "../seo/faq.js";
-import loadLabAssets from "../lib/labAssets.js";
 import "./Home.css";
-
-const ORBIT_SPEED = 0.045;
 
 const STEPS = [
   {
@@ -138,19 +135,7 @@ export default function Home() {
     ),
   );
   const [activeModel, setActiveModel] = useState(0);
-  const [labReady, setLabReady] = useState(false);
   const { state } = useLocation();
-
-  useEffect(() => {
-    let alive = true;
-    loadLabAssets().then(
-      () => alive && setLabReady(true),
-      () => {},
-    );
-    return () => {
-      alive = false;
-    };
-  }, []);
 
   // Arriving from another page via a header/footer section link.
   useEffect(() => {
@@ -193,29 +178,18 @@ export default function Home() {
 
       <section className="shell scene-section">
         <div className="scene">
-          {labReady ? (
-            <lab-scene mode="calm" threat="12" orbit={String(ORBIT_SPEED)} />
-          ) : (
-            <div className="scene__fallback" />
-          )}
-          <div className="scene__risers" aria-hidden="true">
-            <div className="riser" style={{ left: "22%", top: "44%", color: "#17BFE0" }}>
-              +184
-            </div>
-            <div
-              className="riser"
-              style={{ left: "58%", top: "34%", color: "#8B5CF6", animationDelay: "1.4s" }}
-            >
-              +42
-            </div>
-            <div
-              className="riser"
-              style={{ left: "38%", top: "62%", color: "#2FB273", animationDelay: "2.4s" }}
-            >
-              +7 RP
-            </div>
-          </div>
-          <div className="scene__tag">LIVE IN-GAME RENDER</div>
+          <video
+            className="scene__video"
+            src="/clips/hero.mp4"
+            poster="/clips/hero.jpg"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            aria-label="AI Labz lab map, recorded in the game"
+          />
+          <div className="scene__tag">REAL IN-GAME FOOTAGE</div>
         </div>
         <div className="scene-stats">
           <div>{BUILDINGS.length} building systems</div>
