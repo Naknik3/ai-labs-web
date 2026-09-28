@@ -224,7 +224,7 @@ export default function Privacy() {
         <h2>How long we keep it</h2>
         <ul>
           <li><strong>Lab and game state</strong> - while you keep playing. A lab untouched for 24 months may be deleted. You can ask us to delete it at any time - see <Link to="/delete-data">Delete your data</Link>.</li>
-          <li><strong>Server logs</strong> - up to 90 days.</li>
+          <li><strong>Server logs</strong> - only as long as we need them to keep the game secure and fix problems.</li>
           <li><strong>Backups</strong> - up to 6 months, then overwritten.</li>
           <li><strong>Leaderboard entries</strong> - 30 days after the week closes; prize receipts stay with your lab.</li>
           <li><strong>Emails to support</strong> - as long as needed to answer you, then up to 2 years.</li>

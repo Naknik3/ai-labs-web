@@ -64,8 +64,8 @@ export default function DeleteData() {
         <ul>
           <li>
             <strong>Backend logs</strong> - request timestamps, IP addresses,
-            lab IDs and coarse error information, kept for security and
-            debugging and deleted on a rolling basis within 90 days.
+            lab IDs and coarse error information, kept only as long as we
+            need them for security and debugging.
           </li>
           <li>
             <strong>Backups</strong> - encrypted database backups roll over
