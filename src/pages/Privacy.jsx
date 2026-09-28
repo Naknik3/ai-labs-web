@@ -155,8 +155,8 @@ export default function Privacy() {
         <h2>Legal bases (EU/UK players)</h2>
         <ul>
           <li><strong>Performance of our agreement with you</strong> - running your lab, leaderboards, raids and purchases.</li>
-          <li><strong>Legitimate interests</strong> - security, fraud and cheat prevention, crash reports, and aggregate game analytics that help us fix and balance the game.</li>
-          <li><strong>Consent</strong> - personalized ads, install attribution and non-essential cookies. You can withdraw consent at any time through Ad Privacy Choices in the game's Settings or your device settings.</li>
+          <li><strong>Legitimate interests</strong> - security, fraud and cheat prevention, and crash reports that help us fix the game.</li>
+          <li><strong>Consent</strong> - game analytics (Firebase Analytics), personalized ads, install attribution (AppsFlyer) and non-essential cookies. In the EU and UK none of these start until you answer the consent form. You can withdraw consent at any time through Ad Privacy Choices in the game's Settings or your device settings.</li>
           <li><strong>Legal obligation</strong> - keeping records the law requires, such as purchase and tax records.</li>
         </ul>
 
