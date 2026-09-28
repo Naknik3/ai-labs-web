@@ -8,22 +8,23 @@ export default function DeleteData() {
       <Seo path="/delete-data" />
       <div className="legal__header">
         <h1>Delete your AI-LABZ data</h1>
-        <p className="legal__updated">Last updated September 6, 2026</p>
+        <p className="legal__updated">Last updated September 28, 2026</p>
       </div>
 
       <div className="legal__doc">
         <h2>How to request deletion</h2>
         <p>
           AI-LABZ has no account and no login, so there is nothing to sign
-          in to and delete. Instead, send us the device token your lab is
-          stored under and we'll delete it.
+          in to and delete. Instead, send us your lab's reference and we'll
+          delete it.
         </p>
         <ul>
           <li>Open AI-LABZ and go to Settings.</li>
           <li>
             Tap <strong>Contact support</strong>. This opens your email app
-            with your device token and lab ID already filled in, so you
-            don't have to find them yourself.
+            with your lab ID and a reference code (the <strong>Lab:</strong>{" "}
+            and <strong>Ref:</strong> lines) already filled in, so you don't
+            have to find them yourself.
           </li>
           <li>
             Change the subject to <strong>"Delete my AI-LABZ data"</strong>{" "}
@@ -51,19 +52,30 @@ export default function DeleteData() {
             territory, trained models, and incident history.
           </li>
           <li>Your notification push token, if you enabled notifications.</li>
+          <li>Your lab name and its entries on the weekly leaderboards and raid standings.</li>
+          <li>The install-attribution record stored with your device.</li>
         </ul>
+        <p>
+          We also ask RevenueCat and AppsFlyer to delete what they hold under
+          your lab's identifier.
+        </p>
 
         <h2>What we keep, and for how long</h2>
         <ul>
           <li>
-            <strong>Backend logs</strong> - request timestamps and coarse
-            error information, retained up to 90 days for security and
-            debugging, then deleted on a rolling basis. These are not tied
-            to a deleted lab in any way we can search after the fact.
+            <strong>Backend logs</strong> - request timestamps, IP addresses,
+            lab IDs and coarse error information, kept for security and
+            debugging and deleted on a rolling basis within 90 days.
+          </li>
+          <li>
+            <strong>Backups</strong> - encrypted database backups roll over
+            on a fixed schedule; the oldest is kept for six months. A deleted
+            lab disappears from backups as they expire, and we never restore
+            it.
           </li>
           <li>
             <strong>Purchase records</strong> - the App Store and Google
-            Play keep their own record of any AI-LABZ PRO subscription for
+            Play keep their own record of any AI-LABZ purchase for
             tax and refund purposes. That record is theirs, not ours, and we
             cannot delete it. Manage or cancel a subscription through your
             store account.

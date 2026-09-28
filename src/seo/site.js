@@ -51,7 +51,7 @@ export const ROUTES = [
   },
   {
     path: "/children-safety",
-    updated: "2026-08-12",
+    updated: "2026-09-28",
     title: "Children's Safety Standards - AI-LABZ",
     description:
       "AI-LABZ's Children's Safety Standards (CSAE): our zero-tolerance stance on child sexual abuse and exploitation, and how to report a concern.",
@@ -65,7 +65,7 @@ export const ROUTES = [
   },
   {
     path: "/delete-data",
-    updated: "2026-09-06",
+    updated: "2026-09-28",
     title: "Delete your data - AI-LABZ",
     description:
       "How to ask us to delete your AI-LABZ lab: the steps, what gets removed, and what the app stores and billing systems keep regardless.",

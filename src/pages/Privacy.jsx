@@ -20,6 +20,12 @@ export default function Privacy() {
           what choices you have. AI-LABZ runs without an account or login,
           and this policy reflects that.
         </p>
+        <p>
+          AI-LABZ is made by <strong>G.L.H Development</strong>, based in
+          Israel, which is the controller of the personal data described
+          here. Contact:{" "}
+          <a href="mailto:ailabzsupport@gmail.com">ailabzsupport@gmail.com</a>.
+        </p>
 
         <h2>Information we collect</h2>
         <h3>Device token</h3>
@@ -52,7 +58,8 @@ export default function Privacy() {
           which lets Meta Audience Network and AppLovin compete to fill the
           same ad slot. To do that, the app reads your device's advertising
           identifier - the Android Advertising ID on Android, or the
-          Identifier for Advertisers (IDFA) on iOS - and the ad network that
+          Identifier for Advertisers (IDFA) on iOS, only if you allow
+          tracking - and the ad network that
           serves an ad uses it to select ads, measure how they perform, and
           limit how often you see the same one. Depending on your settings
           and region, those ads may be personalized to you.
@@ -60,9 +67,11 @@ export default function Privacy() {
         <p>
           We also use AppsFlyer to measure which ad or link led to your
           install, so we know where new players come from. AppsFlyer
-          receives your advertising identifier and its own AppsFlyer ID, and
-          may pass attribution signals back to the ad network that referred
-          you.
+          receives your advertising identifier (if available), the device's
+          vendor identifier (IDFV on iOS), its own AppsFlyer ID, and an
+          identifier for your lab, and may pass attribution signals back to
+          the ad network that referred you. We store the attribution result
+          (which network or campaign brought you) with your lab.
         </p>
         <h3>Analytics, crash reports, and notifications</h3>
         <p>
@@ -84,24 +93,29 @@ export default function Privacy() {
         </p>
         <h3>Purchases and subscriptions</h3>
         <p>
-          In-app purchases - the AI-LABZ PRO subscription, Cores, credit
-          packs and bundles - are billed by the App Store or Google Play and
-          managed for us by RevenueCat. RevenueCat receives your device token
-          as its user identifier, along with the purchase and renewal status
-          reported by the store, so the game knows what you bought and
-          whether your subscription is active. Neither we nor RevenueCat ever
-          see your card, bank, or store account details.
+          In-app purchases - AI-LABZ PRO (monthly or lifetime), Cores,
+          credit packs and bundles - are billed by the App Store or Google
+          Play and managed for us by RevenueCat. RevenueCat receives an
+          identifier for your device and your lab ID, the purchase and
+          renewal status reported by the store, and ad revenue events, so
+          the game knows what you bought and whether PRO is active. Neither
+          we nor RevenueCat ever see your card, bank, or store account
+          details.
         </p>
         <h3>Technical and diagnostic data</h3>
         <p>
-          Our backend logs the standard technical data needed to run the
-          game and keep it stable, such as request timestamps and coarse
-          error information. All traffic between the app and our servers is
-          encrypted in transit.
+          Our backend logs the technical data needed to run the game and
+          keep it stable: request timestamps, your IP address, your lab ID,
+          and coarse error information. We look up your country from your
+          IP address on our own server (no third party is involved) and
+          store it with your lab and in analytics, to understand where
+          players are. Server errors are reported to Sentry. All traffic
+          between the app and our servers is encrypted in transit.
         </p>
         <h3>This website</h3>
         <p>
-          The site you're reading this on (the AI-LABZ marketing site) uses
+          The site you're reading this on (the AI-LABZ marketing site) is
+          hosted on Vercel, which receives your IP address to serve it. It uses
           Google Analytics 4 to count visits and see which pages and store
           buttons get used. Google Analytics sets first-party cookies and
           receives your IP address, browser and device type, and the pages
@@ -114,7 +128,7 @@ export default function Privacy() {
         <h2>What we don't collect</h2>
         <ul>
           <li>No name, email address, or phone number, unless you choose to email us</li>
-          <li>No contacts, photos, microphone, or precise location</li>
+          <li>No contacts, photos, microphone, or precise location (only the country, from your IP address)</li>
           <li>No payment card details - purchases are handled entirely by the App Store / Google Play billing system, which we never see</li>
         </ul>
 
@@ -137,6 +151,14 @@ export default function Privacy() {
           cross-context behavioral advertising, and the controls below are
           how you opt out of it.
         </p>
+
+        <h2>Legal bases (EU/UK players)</h2>
+        <ul>
+          <li><strong>Performance of our agreement with you</strong> - running your lab, leaderboards, raids and purchases.</li>
+          <li><strong>Legitimate interests</strong> - security, fraud and cheat prevention, crash reports, and aggregate game analytics that help us fix and balance the game.</li>
+          <li><strong>Consent</strong> - personalized ads, install attribution and non-essential cookies. You can withdraw consent at any time through Ad Privacy Choices in the game's Settings or your device settings.</li>
+          <li><strong>Legal obligation</strong> - keeping records the law requires, such as purchase and tax records.</li>
+        </ul>
 
         <h2>Third-party services</h2>
         <p>
@@ -178,26 +200,45 @@ export default function Privacy() {
             <a href="https://www.revenuecat.com/privacy/" target="_blank" rel="noreferrer noopener">RevenueCat Privacy Policy</a>
           </li>
           <li>
+            <strong>Sentry</strong> - server error monitoring.{" "}
+            <a href="https://sentry.io/privacy/" target="_blank" rel="noreferrer noopener">Sentry Privacy Policy</a>
+          </li>
+          <li>
+            <strong>Hostinger</strong> - hosts the game's servers and database.{" "}
+            <a href="https://www.hostinger.com/privacy-policy" target="_blank" rel="noreferrer noopener">Hostinger Privacy Policy</a>
+          </li>
+          <li>
+            <strong>Cloudflare R2</strong> - stores encrypted database backups.{" "}
+            <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noreferrer noopener">Cloudflare Privacy Policy</a>
+          </li>
+          <li>
+            <strong>Vercel</strong> - hosts this website.{" "}
+            <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noreferrer noopener">Vercel Privacy Policy</a>
+          </li>
+          <li>
             <strong>Apple App Store and Google Play</strong> - distribution
             and billing, each governed by its own privacy policy.
           </li>
         </ul>
 
         <h2>How long we keep it</h2>
-        <p>
-          Your lab's game state is kept for as long as your device token is
-          active, so you don't lose progress. You can ask us to delete it at
-          any time - see <Link to="/delete-data">Delete your data</Link> for
-          the steps and what gets removed.
-        </p>
+        <ul>
+          <li><strong>Lab and game state</strong> - while you keep playing. A lab untouched for 24 months may be deleted. You can ask us to delete it at any time - see <Link to="/delete-data">Delete your data</Link>.</li>
+          <li><strong>Server logs</strong> - up to 90 days.</li>
+          <li><strong>Backups</strong> - up to 6 months, then overwritten.</li>
+          <li><strong>Leaderboard entries</strong> - 30 days after the week closes; prize receipts stay with your lab.</li>
+          <li><strong>Emails to support</strong> - as long as needed to answer you, then up to 2 years.</li>
+          <li><strong>Third parties</strong> - under their own retention settings, linked above.</li>
+        </ul>
 
-        <h2>International users</h2>
+        <h2>International transfers</h2>
         <p>
-          AI-LABZ's servers may process and store data in a different
-          country than the one you're playing from, and the third-party
-          services listed above operate internationally. By using the game,
-          you understand your information may be transferred to and
-          processed in those locations.
+          We are based in Israel, which the European Commission recognizes
+          as providing adequate protection for personal data. Some of the
+          services listed above process data in the United States and other
+          countries; where they receive data from the EU or UK, they rely on
+          the European Commission's Standard Contractual Clauses or the
+          EU-U.S. Data Privacy Framework.
         </p>
 
         <h2>Children's privacy</h2>
@@ -236,10 +277,26 @@ export default function Privacy() {
             asking us to delete your data removes your lab entirely.
           </li>
         </ul>
+        <h2>Your rights</h2>
         <p>
-          If you're in a region with specific data rights (like the EU/UK's
-          GDPR or California's CCPA), you can exercise them by emailing us
-          at <a href="mailto:ailabzsupport@gmail.com">ailabzsupport@gmail.com</a>.
+          Depending on where you live (for example under the EU/UK GDPR,
+          Israel's Privacy Protection Law, or California's CCPA), you can ask
+          us to:
+        </p>
+        <ul>
+          <li>tell you what data we hold about your lab and give you a copy;</li>
+          <li>correct it or delete it;</li>
+          <li>restrict or object to how we use it, including for analytics or advertising;</li>
+          <li>send it to you in a portable format;</li>
+          <li>withdraw consent you gave, at any time, without affecting what happened before.</li>
+        </ul>
+        <p>
+          Email <a href="mailto:ailabzsupport@gmail.com">ailabzsupport@gmail.com</a>{" "}
+          with the Lab and Ref lines from the game's Contact support email so
+          we can find your lab. We answer within 30 days. We won't treat you
+          differently for using these rights. You also have the right to
+          complain to your local data protection authority - in the EU, the
+          one in your country; in Israel, the Privacy Protection Authority.
         </p>
 
         <h2>Security</h2>

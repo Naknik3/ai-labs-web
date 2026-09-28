@@ -8,7 +8,7 @@ export default function ChildrenSafety() {
       <Seo path="/children-safety" />
       <div className="legal__header">
         <h1>Children's Safety Standards</h1>
-        <p className="legal__updated">Last updated August 12, 2026</p>
+        <p className="legal__updated">Last updated September 28, 2026</p>
       </div>
 
       <div className="legal__doc">
@@ -32,13 +32,18 @@ export default function ChildrenSafety() {
         <h2>No stranger contact by design</h2>
         <p>
           AI-LABZ has no chat, messaging, friends list, or any way for
-          players to contact each other. There is no user-generated
-          content, no public profiles, and no login - every lab is
-          identified only by an anonymous device token. There is no
-          mechanism in the game for one player to interact with, message,
-          or share content with another. This removes the primary vectors
-          for grooming and stranger contact that this policy exists to
-          prevent.
+          players to contact each other, and no login - every lab is
+          identified only by an anonymous device token. This removes the
+          primary vectors for grooming and stranger contact that this
+          policy exists to prevent.
+        </p>
+        <p>
+          The one thing other players can see is your lab's name, shown with
+          its score on the weekly leaderboards and in Lab Raid standings.
+          Players can't reply to it or message its owner. Names are checked
+          against a filter for slurs, hate and sexual words when they are
+          set and again before a board is shown, and any name can be
+          reported to us - we rename or remove labs that break the rules.
         </p>
 
         <h2>What we don't collect from anyone, including minors</h2>

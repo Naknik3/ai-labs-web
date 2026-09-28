@@ -14,8 +14,9 @@ export default function Terms() {
         <h2>1. Acceptance of terms</h2>
         <p>
           By downloading, installing, or playing AI-LABZ (the "Game"), you
-          agree to these Terms of Service. If you don't agree, please don't
-          use the Game.
+          agree to these Terms of Service with G.L.H Development, Israel
+          ("we", "us"), the maker of the Game. If you don't agree, please
+          don't use the Game.
         </p>
 
         <h2>2. What AI-LABZ is</h2>
@@ -72,7 +73,8 @@ export default function Terms() {
         <p>
           AI-LABZ is free to play. It offers optional rewarded ads, optional
           one-time purchases (Cores, credit packs and bundles), and an
-          optional subscription ("AI-LABZ PRO") with perks such as no
+          optional upgrade ("AI-LABZ PRO", sold as a monthly subscription or
+          a one-time lifetime purchase) with perks such as no
           interstitial ads, boosts without watching an ad, and shorter
           training cooldowns. All of them are billed and managed through the
           Apple App Store or Google Play.
@@ -138,9 +140,10 @@ export default function Terms() {
 
         <h2>13. Governing law</h2>
         <p>
-          These terms are governed by the laws of{" "}
-          <strong>[governing-law jurisdiction - fill this in]</strong>,
-          without regard to conflict-of-law principles.
+          These terms are governed by the laws of the State of Israel,
+          without regard to conflict-of-law principles. If you are a
+          consumer, this does not take away any protection you have under
+          the mandatory laws of the country where you live.
         </p>
 
         <h2>14. Severability</h2>
