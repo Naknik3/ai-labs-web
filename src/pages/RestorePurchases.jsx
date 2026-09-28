@@ -8,7 +8,7 @@ export default function RestorePurchases() {
       <Seo path="/restore-purchases" />
       <div className="legal__header">
         <h1>Restore Purchases</h1>
-        <p className="legal__updated">Last updated August 12, 2026</p>
+        <p className="legal__updated">Last updated September 28, 2026</p>
       </div>
 
       <div className="legal__doc">
@@ -28,6 +28,22 @@ export default function RestorePurchases() {
           described in our <Link to="/privacy">Privacy Policy</Link>, not to
           your store account. Restoring purchases only reconnects your
           AI-LABZ PRO entitlement.
+        </p>
+
+        <h2>Cores, credit packs and bundles</h2>
+        <p>
+          Cores, credit packs and bundles are one-time consumable
+          purchases. They are delivered to the lab you bought them in, and
+          whatever you buy with them - skins included - belongs to that
+          lab. The stores have nothing to restore for a consumable, so
+          "Restore Purchases" won't re-deliver them. If one you paid for
+          never arrived, email us with the store receipt and we'll check
+          it against our records.
+        </p>
+        <p>
+          A prestige at the Epoch Gate wipes the lab, including credits,
+          chips and models from paid packs and bundles. That is not a lost
+          purchase and can't be restored. Skins survive a prestige.
         </p>
 
         <h2>iOS - restore in AI-LABZ</h2>

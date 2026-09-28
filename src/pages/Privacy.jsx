@@ -8,7 +8,7 @@ export default function Privacy() {
       <Seo path="/privacy" />
       <div className="legal__header">
         <h1>Privacy Policy</h1>
-        <p className="legal__updated">Last updated September 6, 2026</p>
+        <p className="legal__updated">Last updated September 28, 2026</p>
       </div>
 
       <div className="legal__doc">
@@ -37,14 +37,25 @@ export default function Privacy() {
           associated with your device token, so your lab persists between
           sessions and survives app restarts.
         </p>
+        <h3>Lab name and leaderboards</h3>
+        <p>
+          Your lab has a name. Until you choose one it is a generated
+          placeholder; you can rename it in the game. The name, your weekly
+          score and your rank are shown to other players on the weekly
+          leaderboards and in Lab Raid standings. Don't put your real name
+          or anything personal in it. Names that break our rules on slurs,
+          hate or sexual content are rejected.
+        </p>
         <h3>Advertising and device identifiers</h3>
         <p>
-          AI-LABZ shows ads through Google AdMob. To do that, the app reads
-          your device's advertising identifier - the Android Advertising ID
-          on Android, or the Identifier for Advertisers (IDFA) on iOS - and
-          Google uses it to select ads, measure how they perform, and limit
-          how often you see the same one. Depending on your settings and
-          region, those ads may be personalized to you.
+          AI-LABZ shows ads through Google AdMob. AdMob also runs mediation,
+          which lets Meta Audience Network and AppLovin compete to fill the
+          same ad slot. To do that, the app reads your device's advertising
+          identifier - the Android Advertising ID on Android, or the
+          Identifier for Advertisers (IDFA) on iOS - and the ad network that
+          serves an ad uses it to select ads, measure how they perform, and
+          limit how often you see the same one. Depending on your settings
+          and region, those ads may be personalized to you.
         </p>
         <p>
           We also use AppsFlyer to measure which ad or link led to your
@@ -71,14 +82,15 @@ export default function Privacy() {
           includes subscription events - when an AI-LABZ PRO subscription
           starts or lapses - but never any payment details.
         </p>
-        <h3>Subscriptions</h3>
+        <h3>Purchases and subscriptions</h3>
         <p>
-          AI-LABZ PRO is billed by the App Store or Google Play and managed
-          for us by RevenueCat. RevenueCat receives your device token as
-          its user identifier, along with the purchase and renewal status
-          reported by the store, so the game knows whether your
-          subscription is active. Neither we nor RevenueCat ever see your
-          card, bank, or store account details.
+          In-app purchases - the AI-LABZ PRO subscription, Cores, credit
+          packs and bundles - are billed by the App Store or Google Play and
+          managed for us by RevenueCat. RevenueCat receives your device token
+          as its user identifier, along with the purchase and renewal status
+          reported by the store, so the game knows what you bought and
+          whether your subscription is active. Neither we nor RevenueCat ever
+          see your card, bank, or store account details.
         </p>
         <h3>Technical and diagnostic data</h3>
         <p>
@@ -89,23 +101,27 @@ export default function Privacy() {
         </p>
         <h3>This website</h3>
         <p>
-          The site you're reading this on (the AI-LABZ marketing site) is a
-          static page. It doesn't use cookies, doesn't run analytics, and
-          doesn't set any tracking identifiers. Clicking a "get notified"
-          link simply opens an email to us - we don't capture anything
-          automatically.
+          The site you're reading this on (the AI-LABZ marketing site) uses
+          Google Analytics 4 to count visits and see which pages and store
+          buttons get used. Google Analytics sets first-party cookies and
+          receives your IP address, browser and device type, and the pages
+          you view. We use it only in aggregate and don't combine it with
+          your game data. You can block it with your browser's cookie or
+          tracking settings, or with Google's{" "}
+          <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noreferrer noopener">opt-out add-on</a>.
         </p>
 
         <h2>What we don't collect</h2>
         <ul>
           <li>No name, email address, or phone number, unless you choose to email us</li>
           <li>No contacts, photos, microphone, or precise location</li>
-          <li>No payment card details - subscriptions are handled entirely by the App Store / Google Play billing system, which we never see</li>
+          <li>No payment card details - purchases are handled entirely by the App Store / Google Play billing system, which we never see</li>
         </ul>
 
         <h2>How we use information</h2>
         <ul>
           <li>To run your lab: save and load your progress, resources, and incidents.</li>
+          <li>To run the weekly leaderboards and Lab Raids: rank labs and pay out prizes.</li>
           <li>To keep the game fair and stable: prevent duplicate or conflicting progress across devices, debug crashes and errors.</li>
           <li>To show ads, which are how the game pays for itself, and to measure whether they worked.</li>
           <li>To understand in aggregate how the game is played, so we can balance and improve it.</li>
@@ -114,8 +130,9 @@ export default function Privacy() {
         </ul>
         <p>
           We do not sell your personal information for money. We do share
-          the identifiers described above with Google AdMob and AppsFlyer,
-          who use them for advertising and attribution - under some privacy
+          the identifiers described above with Google AdMob, its mediation
+          partners Meta Audience Network and AppLovin, and AppsFlyer, who
+          use them for advertising and attribution - under some privacy
           laws, including California's, that counts as "sharing" for
           cross-context behavioral advertising, and the controls below are
           how you opt out of it.
@@ -133,6 +150,20 @@ export default function Privacy() {
             <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer noopener">Google Privacy Policy</a>
           </li>
           <li>
+            <strong>Meta Audience Network</strong> - advertising, via AdMob
+            mediation.{" "}
+            <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noreferrer noopener">Meta Privacy Policy</a>
+          </li>
+          <li>
+            <strong>AppLovin</strong> - advertising, via AdMob mediation.{" "}
+            <a href="https://www.applovin.com/privacy/" target="_blank" rel="noreferrer noopener">AppLovin Privacy Policy</a>
+          </li>
+          <li>
+            <strong>Google Analytics</strong> - visit statistics for this
+            website only.{" "}
+            <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer noopener">Google Privacy Policy</a>
+          </li>
+          <li>
             <strong>Firebase Analytics, Crashlytics, and Cloud Messaging</strong>{" "}
             (Google) - analytics, crash reporting, notifications.{" "}
             <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noreferrer noopener">Firebase privacy</a>
@@ -143,7 +174,7 @@ export default function Privacy() {
             <a href="https://www.appsflyer.com/legal/services-privacy-policy/" target="_blank" rel="noreferrer noopener">AppsFlyer Privacy Policy</a>
           </li>
           <li>
-            <strong>RevenueCat</strong> - subscription management.{" "}
+            <strong>RevenueCat</strong> - purchase and subscription management.{" "}
             <a href="https://www.revenuecat.com/privacy/" target="_blank" rel="noreferrer noopener">RevenueCat Privacy Policy</a>
           </li>
           <li>

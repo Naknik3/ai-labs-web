@@ -7,7 +7,7 @@ export default function Terms() {
       <Seo path="/terms" />
       <div className="legal__header">
         <h1>Terms of Service</h1>
-        <p className="legal__updated">Last updated August 12, 2026</p>
+        <p className="legal__updated">Last updated September 28, 2026</p>
       </div>
 
       <div className="legal__doc">
@@ -59,23 +59,43 @@ export default function Terms() {
           <li>Cheat, exploit bugs, or use unauthorized third-party software to gain an unfair advantage;</li>
           <li>Interfere with or disrupt the Game's servers or other players' access;</li>
           <li>Attempt to gain unauthorized access to any part of the Game or its infrastructure;</li>
+          <li>Give your lab a name that is hateful, sexual, harassing, or impersonates someone else - lab names are shown to other players on leaderboards;</li>
           <li>Use the Game for any unlawful purpose.</li>
         </ul>
         <p>
           We may suspend or reset a lab we reasonably believe is violating
-          these terms.
+          these terms, rename it, or remove it from a leaderboard and its
+          prizes.
         </p>
 
-        <h2>7. Virtual items and AI-LABZ PRO</h2>
+        <h2>7. Virtual items, Cores and AI-LABZ PRO</h2>
         <p>
-          AI-LABZ is free to play. It may offer optional rewarded ads and an
-          optional subscription ("AI-LABZ PRO") for perks like removing ads
-          or unlocking cosmetics, billed and managed through the Apple App
-          Store or Google Play. In-game resources, credits, and cosmetics
-          have no real-world monetary value, cannot be redeemed for cash,
-          and are not transferable outside the Game. Subscription pricing,
-          renewal, and cancellation are governed by the terms of the store
-          you subscribed through.
+          AI-LABZ is free to play. It offers optional rewarded ads, optional
+          one-time purchases (Cores, credit packs and bundles), and an
+          optional subscription ("AI-LABZ PRO") with perks such as no
+          interstitial ads, boosts without watching an ad, and shorter
+          training cooldowns. All of them are billed and managed through the
+          Apple App Store or Google Play.
+        </p>
+        <p>
+          Cores are a premium in-game currency, spent in the Game on skins
+          and credits. Cores, credits, chips, models, skins and every other
+          in-game item have no real-world monetary value, cannot be redeemed
+          for cash, and are not transferable outside the Game. Consumable
+          purchases such as Cores and credit packs are used up when
+          delivered and cannot be restored the way a subscription can.
+        </p>
+        <p>
+          <strong>Prestige resets your lab.</strong> Prestiging at the Epoch
+          Gate is always your choice, and it wipes the lab back to a new
+          lab's state. Only cosmetics, such as skins, survive it. Credits,
+          chips, models and other items from paid packs and bundles are
+          wiped along with everything else, and the Game says so on the
+          confirm screen before you prestige.
+        </p>
+        <p>
+          Subscription pricing, renewal, and cancellation are governed by
+          the terms of the store you subscribed through.
         </p>
 
         <h2>8. Third-party platforms</h2>
