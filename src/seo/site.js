@@ -33,18 +33,18 @@ export const ROUTES = [
     path: "/",
     title: "AI-LABZ - Build Intelligence. Contain What You Create.",
     description:
-      "AI-LABZ is an idle AI research management game, out now on iPhone and Android. Build the lab, train the models, and contain what you create.",
+      "AI-LABZ is a free idle AI lab game for iPhone and Android. Build the lab, train AI models, solve the puzzle when one breaks out, and top the weekly leaderboards.",
   },
   {
     path: "/privacy",
-    updated: "2026-09-06",
+    updated: "2026-09-28",
     title: "Privacy Policy - AI-LABZ",
     description:
       "How AI-LABZ handles your data: no account, no login, just a random device token. What the game collects, which third parties receive it, and the choices you have.",
   },
   {
     path: "/terms",
-    updated: "2026-08-12",
+    updated: "2026-09-28",
     title: "Terms of Service - AI-LABZ",
     description:
       "The terms you agree to when you play AI-LABZ - your lab and its data, purchases, acceptable use, and how the game may change over time.",
@@ -58,7 +58,7 @@ export const ROUTES = [
   },
   {
     path: "/restore-purchases",
-    updated: "2026-08-12",
+    updated: "2026-09-28",
     title: "Restore Purchases - AI-LABZ",
     description:
       "How to restore AI-LABZ in-app purchases on iPhone and Android, and what to do if a purchase you made is missing from your lab.",

@@ -24,6 +24,8 @@ import { SITE, ROUTES, routeFor, isIndexable, absolute } from "../src/seo/site.j
 import { headFor } from "../src/seo/meta.js";
 import { schemaFor } from "../src/seo/schema.js";
 import { FAQ } from "../src/seo/faq.js";
+import { BUILDINGS } from "../src/data/buildings.js";
+import { MODELS } from "../src/data/models.js";
 
 const root = path.resolve(fileURLToPath(import.meta.url), "../..");
 const dist = path.join(root, "dist");
@@ -148,12 +150,14 @@ function llms() {
 > ${routeFor("/").description}
 
 ${SITE.name} is an idle AI research management game. It is out now on the App Store for
-iPhone and on Google Play for Android. You build an island laboratory from
-compute, power and cooling structures, convert compute into research, and convert research
-into AI models - each with its own behaviour, rarity and power draw. Sixteen building systems
-and sixteen named specimens. The smarter a model becomes, the higher the containment threat, and a
-breached vault takes the sector with it. The game runs without an account or login: a random
-device token identifies your lab.
+iPhone and on Google Play for Android. You build an island laboratory, train AI models that
+earn while you are away, and keep them contained - ${BUILDINGS.length} building systems and
+${MODELS.length} named specimens. The smarter a model becomes, the higher the containment threat.
+Incidents break out as 15 kinds of timed puzzle; fail one and a model can escape, to be chased
+down in a recapture. Each week brings three leaderboard contests (XP, the Runaway arcade mode,
+and Lab Raids against a shared rogue model), and at lab level 100 the Epoch Gate lets you
+prestige into a stronger run. The game runs without an account or login: a random device token
+identifies your lab.
 
 - Platforms: iPhone and Android. Mobile only.
 - Status: live on the App Store and Google Play, free to download with optional in-app purchases

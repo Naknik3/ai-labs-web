@@ -69,7 +69,11 @@ Keep `three` pinned at `0.184.0` (the version the bundle was authored against) u
 
 Two constraints the site inherits from this: paths are **root-absolute** (`/lab/…`, `/vendor/three/…`), so a subpath deploy breaks the scene; and the host must rewrite unknown paths to `index.html` (or serve `dist/404.html`) for client routing to work.
 
-The building preview is a separate Three.js iframe at `public/building-viewer/`. Keep the iframe mounted while changing tiers so its in-memory GLB cache survives; `src/components/BuildingViewer.jsx` uses a request generation guard so stale async loads cannot reveal the wrong building. The PNG is a first-load/error fallback, not the normal steady-state view. Building assets are 16 systems and 65 visual tiers: four tiers for standard systems and five for Power Plant.
+The building preview is a separate Three.js iframe at `public/building-viewer/`. Keep the iframe mounted while changing tiers so its in-memory GLB cache survives; `src/components/BuildingViewer.jsx` uses a request generation guard so stale async loads cannot reveal the wrong building. The PNG is a first-load/error fallback, not the normal steady-state view. Building data mirrors the game's `frontend/lib/shared/map/buildings.dart` (18 systems; tier counts are computed as `VISUAL_TIER_COUNT`). The viewer bundle's entry source is not in either repo and predates the Arcade and Epoch Gate, so those two carry `live: false` and show their PNGs (copied from the game's `frontend/assets/buildings/`).
+
+The model viewer (`public/model-viewer/model-viewer.bundle.js`) is the game's own build output, copied from `frontend/assets/map/model-viewer.bundle.js` after `tool/build_map.sh`; the site's `index.html` shim wraps it for the ready/failed handshake. Prestige models pass `maxLevel: 3`, their in-game cap.
+
+The gameplay clips in `public/clips/` are cut from the game repo's `marketing/adspots/final/no-sound/*_9x16.mp4`: the top 1080×1400 (dropping the burned-in captions and the end card), scaled to 480 wide, h264 CRF 29, no audio, with a poster frame. Keep each under ~500 KB.
 
 ### Styling
 

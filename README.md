@@ -8,8 +8,9 @@ the App Store and Play Console link to. Meant to be hosted as a static site
 
 - `/` - landing page, ported 1:1 from the **"AI-Labz Site" design handoff**
   (`AI-Labz Site.html`, kept at the repo root as the visual reference):
-  hero, live 3D lab scene, "how it plays", the 16-building browser, the
-  16-specimen browser, and the store download CTA.
+  hero, live 3D lab scene, "how it plays", gameplay clips, the feature
+  grid, the 18-building browser, the 19-specimen browser, the FAQ, and the
+  store download CTA.
 - `/privacy` - Privacy Policy.
 - `/terms` - Terms of Service.
 - `/children-safety` - Children's Safety Standards (CSAE).
