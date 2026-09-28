@@ -1,6 +1,7 @@
 import { StrictMode } from "react";
 import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router";
+import "./fonts.css";
 import "./tokens.css";
 import App from "./App.jsx";
 
