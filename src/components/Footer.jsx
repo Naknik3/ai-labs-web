@@ -17,6 +17,8 @@ export default function Footer() {
         <div className="site-footer__spacer" />
         <nav className="site-footer__links">
           <SectionLink id="play">How it plays</SectionLink>
+          <SectionLink id="gameplay">Gameplay</SectionLink>
+          <SectionLink id="features">Features</SectionLink>
           <SectionLink id="buildings">Buildings</SectionLink>
           <SectionLink id="models">Models</SectionLink>
           <SectionLink id="faq">FAQ</SectionLink>

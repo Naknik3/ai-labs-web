@@ -16,6 +16,7 @@ export default function Header() {
         <div className="site-header__spacer" />
         <nav className="site-header__nav">
           <SectionLink id="play">How it plays</SectionLink>
+          <SectionLink id="features">Features</SectionLink>
           <SectionLink id="buildings">Buildings</SectionLink>
           <SectionLink id="models">Models</SectionLink>
         </nav>

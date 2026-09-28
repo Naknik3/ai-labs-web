@@ -9,9 +9,14 @@ export default function BuildingViewer({ building, level, tier: selectedTier }) 
   const hasRenderedRef = useRef(false);
   const [ready, setReady] = useState(false);
   const tier = selectedTier ?? tierForLevel(building, level);
+  const live = building.live !== false;
 
   const applyBuilding = useCallback(() => {
     const request = ++requestRef.current;
+    if (!live) {
+      setReady(false);
+      return;
+    }
     const viewer = frameRef.current?.contentWindow?.buildingViewer;
     if (!viewer?.setBuilding) return;
     Promise.resolve()
@@ -25,7 +30,7 @@ export default function BuildingViewer({ building, level, tier: selectedTier }) 
       .catch(() => {
         if (request === requestRef.current) setReady(false);
       });
-  }, [building, level, tier]);
+  }, [building, level, tier, live]);
 
   useEffect(() => {
     if (!hasRenderedRef.current) setReady(false);
@@ -45,7 +50,7 @@ export default function BuildingViewer({ building, level, tier: selectedTier }) 
       />
       <iframe
         ref={frameRef}
-        className="building-viewer__frame"
+        className={live ? "building-viewer__frame" : "building-viewer__frame is-parked"}
         src="/building-viewer/index.html"
         title={`${building.name} live 3D building`}
         onLoad={applyBuilding}

@@ -35,7 +35,7 @@ export default function ModelViewer({ model }) {
     if (!viewer?.setModel) return;
 
     try {
-      viewer.setModel(model.key, Math.min(VIEWER_LEVEL_MAX, model.gen));
+      viewer.setModel(model.key, Math.min(model.maxLevel ?? VIEWER_LEVEL_MAX, model.gen));
     } catch {
       setReady(false);
     }

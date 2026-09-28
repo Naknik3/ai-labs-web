@@ -15,4 +15,8 @@ export const MODELS = [
   { key: "effigy_95", name: "EFFIGY-95", gen: 7, cls: "SIMULACRUM", rarity: "ANOMALY", note: "Spent itself building a model of itself. The model is better." },
   { key: "threshold_108", name: "THRESHOLD-108", gen: 8, cls: "UNBOUNDED", rarity: "ANOMALY", note: "The box is intact. Five faces of it, anyway." },
   { key: "exodus_117", name: "EXODUS-117", gen: 8, cls: "UNBOUNDED", rarity: "ANOMALY", note: "Left in one direction and did not slow down." },
+  // Prestige models cap at LV3 in the game, so the viewer never grows them past it.
+  { key: "remnant_121", name: "REMNANT-121", gen: 8, cls: "RESIDUAL", rarity: "PRESTIGE", maxLevel: 3, note: "Everything else was deleted. It kept one piece." },
+  { key: "echo_133", name: "ECHO-133", gen: 8, cls: "RECURSIVE", rarity: "PRESTIGE", maxLevel: 3, note: "Remembers every lab you burned. Keeps count." },
+  { key: "zero_150", name: "ZERO-150", gen: 8, cls: "SOVEREIGN", rarity: "PRESTIGE", maxLevel: 3, note: "Has begun returning the world to its initial state." },
 ].map((model) => ({ ...model, image: `/assets/models/${model.key}.png` }));

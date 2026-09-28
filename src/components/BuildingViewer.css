@@ -18,6 +18,11 @@
   background: transparent;
 }
 
+/* Kept mounted so its GLB cache survives; hidden while a PNG-only building shows. */
+.building-viewer__frame.is-parked {
+  visibility: hidden;
+}
+
 .building-viewer__fallback {
   z-index: 0;
   object-fit: contain;

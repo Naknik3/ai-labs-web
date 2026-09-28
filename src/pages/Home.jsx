@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import SectionLink from "../components/SectionLink.jsx";
 import AppStoreButton from "../components/AppStoreButton.jsx";
 import BuildingViewer from "../components/BuildingViewer.jsx";
+import GameClip from "../components/GameClip.jsx";
 import GooglePlayButton from "../components/GooglePlayButton.jsx";
 import ModelViewer from "../components/ModelViewer.jsx";
 import Seo from "../components/Seo.jsx";
@@ -11,7 +12,7 @@ import {
   BUILDINGS,
   levelForTier,
   tierCountFor,
-  tierForLevel,
+  VISUAL_TIER_COUNT,
 } from "../data/buildings.js";
 import { MODELS } from "../data/models.js";
 import { FAQ } from "../seo/faq.js";
@@ -26,21 +27,103 @@ const STEPS = [
     title: "Build the stack",
     tint: "#EAF6FA",
     color: "#17BFE0",
-    body: "Place compute, power and cooling on the island. Every structure feeds the next one, so layout decides your ceiling.",
+    body: "Power, mines and training halls, spread over eight sectors of land you buy one at a time. Every building feeds the next, and the lab keeps earning while you're away.",
   },
   {
     n: "2",
     title: "Train the models",
     tint: "#F1EBFE",
     color: "#8B5CF6",
-    body: "Compute becomes research. Research becomes specimens with their own behaviour, rarity and appetite for power.",
+    body: "Win a trial to train a model, then fuse two matching ones into something stronger. Each generation earns more and pulls harder at its cage.",
   },
   {
     n: "3",
     title: "Keep it contained",
     tint: "#FFF3E2",
     color: "#E8891F",
-    body: "Smarter models raise the threat meter. Cool it, cage it, or watch the vault breach and take the sector with it.",
+    body: "Smarter models raise the threat meter until something breaks. Every incident is a puzzle on a clock: solve it, or watch a model get out.",
+  },
+];
+
+const CLIPS = [
+  {
+    key: "breach",
+    label: "INCIDENT",
+    accent: "red",
+    title: "Something got out",
+    body: "A breach lights up the vault. Solve the board before the clock hits zero.",
+  },
+  {
+    key: "recapture",
+    label: "RECAPTURE",
+    accent: "amber",
+    title: "It runs. You throw.",
+    body: "Steer the clamp and time the throw, or the runaway comes home weaker.",
+  },
+  {
+    key: "arcade",
+    label: "ARCADE",
+    accent: "cyan",
+    title: "Runaway",
+    body: "Cut the floor, seal it off, and don't let the hunters catch your wall.",
+  },
+  {
+    key: "idle",
+    label: "IDLE",
+    accent: "green",
+    title: "Day 1 to day 7",
+    body: "Buy land, stack buildings, and come back to a lab that kept working.",
+  },
+];
+
+const FEATURES = [
+  {
+    title: "15 incident puzzles",
+    tag: "CONTAIN",
+    accent: "red",
+    body: "Every breach is a board on a clock: circuits, sweep, snake, tetris, breakout, unblock and more. Solve it and the lab is sealed.",
+  },
+  {
+    title: "Recapture",
+    tag: "CONTAIN",
+    accent: "amber",
+    body: "Fail a board and a model can break out. Chase it into the Recapture Range. Lose the chase and it comes home levels down - or, at level 1, it's gone.",
+  },
+  {
+    title: "Loot chests",
+    tag: "REWARD",
+    accent: "violet",
+    body: "Solved incidents pay out in a chest. Its rarity rolls from common to legendary, and the rarity multiplies what's inside.",
+  },
+  {
+    title: "Arcade: Runaway",
+    tag: "WEEKLY",
+    accent: "cyan",
+    body: "Build the Arcade and play swipe-to-contain. Everyone gets the same floors each day, and your best run of the week goes on the board.",
+  },
+  {
+    title: "Weekly leaderboards",
+    tag: "WEEKLY",
+    accent: "cyan",
+    body: "Three contests every week: XP, Arcade and Raid. Prizes of credits, chips and Cores land every Monday.",
+  },
+  {
+    title: "Lab Raids",
+    tag: "ONLINE",
+    accent: "red",
+    body: "A rogue model walks into the containment field and every lab hits it at once. Solve boards to deal damage. The kill pays everyone who hit it.",
+  },
+  {
+    title: "Prestige",
+    tag: "ENDGAME",
+    accent: "lime",
+    body: "At lab level 100 the Epoch Gate wipes the lab into a stronger run. Pick a perk each time, and buy the three prestige models, the strongest in the game.",
+  },
+  {
+    title: "Model skins",
+    tag: "STYLE",
+    accent: "violet",
+    body: "Dress your models in skins with their own finish and etched pattern. Skins are the one thing a prestige never takes.",
   },
 ];
 
@@ -50,7 +133,7 @@ export default function Home() {
     Object.fromEntries(
       BUILDINGS.map((building) => [
         building.key,
-        tierForLevel(building, Math.min(9, building.maxLevel)),
+        tierCountFor(building),
       ]),
     ),
   );
@@ -95,15 +178,15 @@ export default function Home() {
           Contain what you create.
         </h1>
         <p className="hero__lede">
-          An idle lab-management game, live now on iPhone and Android. Sixteen building systems,
-          sixteen specimens, and one
-          containment vault that will not stay quiet while you scale.
+          A free idle lab game for iPhone and Android. Build the lab, train AI models, and solve
+          the puzzle when one breaks out. Then chase it down, top the weekly boards, and prestige
+          into a stronger run.
         </p>
         <div className="hero__actions">
           <AppStoreButton className="btn btn--primary" />
           <GooglePlayButton className="btn btn--ghost" />
-          <SectionLink id="buildings" className="btn btn--ghost">
-            See the lab
+          <SectionLink id="gameplay" className="btn btn--ghost">
+            Watch it play
           </SectionLink>
         </div>
       </section>
@@ -135,9 +218,10 @@ export default function Home() {
           <div className="scene__tag">LIVE IN-GAME RENDER</div>
         </div>
         <div className="scene-stats">
-          <div>16 building systems</div>
-          <div>65 visual tiers</div>
-          <div>16 AI specimens</div>
+          <div>{BUILDINGS.length} building systems</div>
+          <div>{MODELS.length} AI specimens</div>
+          <div>15 incident puzzles</div>
+          <div>3 weekly contests</div>
           <div>Runs while you&rsquo;re away</div>
         </div>
       </section>
@@ -145,7 +229,7 @@ export default function Home() {
       <section id="play" className="shell section">
         <div className="section__head">
           <div className="eyebrow">HOW IT PLAYS</div>
-          <h2 className="section__title">Three loops, one island</h2>
+          <h2 className="section__title">Build it. Train it. Contain it.</h2>
         </div>
         <div className="steps">
           {STEPS.map((step) => (
@@ -165,13 +249,58 @@ export default function Home() {
         </div>
       </section>
 
+      <section id="gameplay" className="shell section">
+        <div className="section__head section__head--wide">
+          <div className="eyebrow">SEE IT MOVE</div>
+          <h2 className="section__title">Real footage from the game</h2>
+        </div>
+        <div className="clips">
+          {CLIPS.map((clip) => (
+            <GameClip
+              key={clip.key}
+              src={`/clips/${clip.key}.mp4`}
+              poster={`/clips/${clip.key}.jpg`}
+              label={clip.label}
+              title={clip.title}
+              body={clip.body}
+              accent={clip.accent}
+            />
+          ))}
+        </div>
+      </section>
+
+      <section id="features" className="shell section">
+        <div className="section__head section__head--wide">
+          <div className="eyebrow">BEYOND THE LAB</div>
+          <h2 className="section__title">Something to chase every week</h2>
+          <p className="section__lede">
+            The idle lab is where it starts. Incidents, contests, raids and prestige are what keep
+            it moving.
+          </p>
+        </div>
+        <div className="features">
+          {FEATURES.map((feature) => (
+            <div className="feature-card" key={feature.title}>
+              <span
+                className="feature-card__tag"
+                style={{ color: `var(--${feature.accent})` }}
+              >
+                {feature.tag}
+              </span>
+              <h3 className="feature-card__title">{feature.title}</h3>
+              <p className="feature-card__body">{feature.body}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
       <section id="buildings" className="shell section">
         <div className="section__head section__head--wide">
           <div className="eyebrow">THE LAB · {BUILDINGS.length} SYSTEMS</div>
           <h2 className="section__title">Every upgrade rebuilds the building</h2>
           <p className="section__lede">
-            From training halos to power plants, every system has its own silhouette and upgrade
-            path. Pick one and drag across its visual tiers.
+            From training halls to the Epoch Gate, every system has its own silhouette and upgrade
+            path - {VISUAL_TIER_COUNT} visual tiers in all. Pick one and drag across them.
           </p>
         </div>
 
@@ -212,6 +341,7 @@ export default function Home() {
                   <span> / {tierCount}</span>
                 </div>
               </div>
+              <p className="tier-card__desc">{building.description}</p>
               <input
                 type="range"
                 min="1"
@@ -240,8 +370,9 @@ export default function Home() {
           <div className="eyebrow">AI SPECIMENS · {MODELS.length} MODELS</div>
           <h2 className="section__title">Meet what the lab creates</h2>
           <p className="section__lede">
-            Train them, contain them, and learn what they become. Every specimen has a generation,
-            a class, and a reason not to leave it unattended.
+            Train them, fuse them, and contain what they become. Every specimen has a generation,
+            a class, and a reason not to leave it unattended. The last three only exist after the
+            Epoch Gate.
           </p>
         </div>
 
