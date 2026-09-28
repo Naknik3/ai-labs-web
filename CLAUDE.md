@@ -79,6 +79,12 @@ The gameplay clips in `public/clips/` are cut from the game repo's `marketing/ad
 
 Design tokens in `src/tokens.css`, one CSS file per component/page. The whole visual language is flat `box-shadow: 0 Npx 0 <edge>` plus large radii - there are no blurred shadows. The in-page brand mark is `src/components/BrandMark.jsx`, an `<img>` pointing at `/brand/mark-256.png` - the mark (ARC-7) is a 3D render with no vector source, so unlike the old caged mascot it cannot be inline SVG. Corner rounding is per-surface CSS, not baked into the file.
 
+Type is Baloo 2 everywhere (body and display, matching the game) with JetBrains Mono for tags. Both are **self-hosted** variable woff2 files in `public/fonts/`, declared in `src/fonts.css` - never link Google Fonts back in, it sends every visitor's IP to Google (a GDPR problem in the EU).
+
+### Legal pages
+
+The legal pages are claims about what the app and site actually do. The controller is **G.L.H Development, Israel**; Terms are governed by Israeli law. Privacy's third-party list says it is complete, so any new SDK, host or data flow in the app (`~/AI-labz`) or here must be added to it, with the "Last updated" string in the page and `updated` in `src/seo/site.js` both bumped. The site runs GA4 in production (`src/lib/analytics.js`) with no consent banner yet.
+
 ## Known state
 
 - **The store links are live** on both iPhone and Android. The App Store and Google Play URLs live in `src/seo/site.js`, which feeds the visible buttons and structured data.
