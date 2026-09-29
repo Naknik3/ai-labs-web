@@ -8,7 +8,7 @@ export default function Privacy() {
       <Seo path="/privacy" />
       <div className="legal__header">
         <h1>Privacy Policy</h1>
-        <p className="legal__updated">Last updated September 28, 2026</p>
+        <p className="legal__updated">Last updated September 29, 2026</p>
       </div>
 
       <div className="legal__doc">
@@ -109,7 +109,11 @@ export default function Privacy() {
           and coarse error information. We look up your country from your
           IP address on our own server (no third party is involved) and
           store it with your lab and in analytics, to understand where
-          players are. Server errors are reported to Sentry. All traffic
+          players are. We also use your country to decide which features,
+          such as optional ads and PRO, are available in your region. The
+          lookup uses GeoLite2 data created by MaxMind, available from{" "}
+          <a href="https://www.maxmind.com" target="_blank" rel="noreferrer noopener">maxmind.com</a>.
+          Server errors are reported to Sentry. All traffic
           between the app and our servers is encrypted in transit.
         </p>
         <h3>This website</h3>
