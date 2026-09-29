@@ -52,7 +52,7 @@ export default function DeleteData() {
             territory, trained models, and incident history.
           </li>
           <li>Your notification push token, if you enabled notifications.</li>
-          <li>Your lab name and its entries on the weekly leaderboards and raid standings.</li>
+          <li>Your lab name and its entries on the weekly leaderboards and Megabreach standings.</li>
           <li>The install-attribution record stored with your device.</li>
         </ul>
         <p>

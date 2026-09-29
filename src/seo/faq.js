@@ -24,7 +24,7 @@ export const FAQ = [
   },
   {
     q: "How do the weekly leaderboards work?",
-    a: "There are three contests each week: XP (earned by solving incidents, winning trials and finishing goals), Arcade (your best Runaway run) and Raid (damage dealt to the week's rogue model). Weeks run Monday to Sunday UTC, and prizes of credits, chips and Cores are paid every Monday. Your lab's name is what other players see.",
+    a: "There are three contests each week: XP (earned by solving incidents, winning trials and finishing goals), Arcade (your best Runaway run) and Megabreach (damage dealt to the week's rogue model). Weeks run Monday to Sunday UTC, and prizes of credits, chips and Cores are paid every Monday. Your lab's name is what other players see.",
   },
   {
     q: "What is prestige in AI-LABZ?",

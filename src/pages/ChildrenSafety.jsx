@@ -39,7 +39,7 @@ export default function ChildrenSafety() {
         </p>
         <p>
           The one thing other players can see is your lab's name, shown with
-          its score on the weekly leaderboards and in Lab Raid standings.
+          its score on the weekly leaderboards and in Megabreach standings.
           Players can't reply to it or message its owner. Names are checked
           against a filter for slurs, hate and sexual words when they are
           set and again before a board is shown, and any name can be

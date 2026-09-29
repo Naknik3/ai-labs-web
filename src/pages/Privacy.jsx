@@ -48,7 +48,7 @@ export default function Privacy() {
           Your lab has a name. Until you choose one it is a generated
           placeholder; you can rename it in the game. The name, your weekly
           score and your rank are shown to other players on the weekly
-          leaderboards and in Lab Raid standings. Don't put your real name
+          leaderboards and in Megabreach standings. Don't put your real name
           or anything personal in it. Names that break our rules on slurs,
           hate or sexual content are rejected.
         </p>
@@ -139,7 +139,7 @@ export default function Privacy() {
         <h2>How we use information</h2>
         <ul>
           <li>To run your lab: save and load your progress, resources, and incidents.</li>
-          <li>To run the weekly leaderboards and Lab Raids: rank labs and pay out prizes.</li>
+          <li>To run the weekly leaderboards and Megabreach: rank labs and pay out prizes.</li>
           <li>To keep the game fair and stable: prevent duplicate or conflicting progress across devices, debug crashes and errors.</li>
           <li>To show ads, which are how the game pays for itself, and to measure whether they worked.</li>
           <li>To understand in aggregate how the game is played, so we can balance and improve it.</li>
@@ -158,7 +158,7 @@ export default function Privacy() {
 
         <h2>Legal bases (EU/UK players)</h2>
         <ul>
-          <li><strong>Performance of our agreement with you</strong> - running your lab, leaderboards, raids and purchases.</li>
+          <li><strong>Performance of our agreement with you</strong> - running your lab, leaderboards, Megabreach and purchases.</li>
           <li><strong>Legitimate interests</strong> - security, fraud and cheat prevention, and crash reports that help us fix the game.</li>
           <li><strong>Consent</strong> - game analytics (Firebase Analytics), personalized ads, install attribution (AppsFlyer) and non-essential cookies. In the EU and UK none of these start until you answer the consent form. You can withdraw consent at any time through Ad Privacy Choices in the game's Settings or your device settings.</li>
           <li><strong>Legal obligation</strong> - keeping records the law requires, such as purchase and tax records.</li>

@@ -102,10 +102,10 @@ const FEATURES = [
     title: "Weekly leaderboards",
     tag: "WEEKLY",
     accent: "cyan",
-    body: "Three contests every week: XP, Arcade and Raid. Prizes of credits, chips and Cores land every Monday.",
+    body: "Three contests every week: XP, Arcade and Megabreach. Prizes of credits, chips and Cores land every Monday.",
   },
   {
-    title: "Lab Raids",
+    title: "Megabreach",
     tag: "ONLINE",
     accent: "red",
     body: "A rogue model walks into the containment field and every lab hits it at once. Solve boards to deal damage. The kill pays everyone who hit it.",
@@ -248,7 +248,7 @@ export default function Home() {
           <div className="eyebrow">BEYOND THE LAB</div>
           <h2 className="section__title">Something to chase every week</h2>
           <p className="section__lede">
-            The idle lab is where it starts. Incidents, contests, raids and prestige are what keep
+            The idle lab is where it starts. Incidents, contests, Megabreach and prestige are what keep
             it moving.
           </p>
         </div>
