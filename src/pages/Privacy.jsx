@@ -8,7 +8,7 @@ export default function Privacy() {
       <Seo path="/privacy" />
       <div className="legal__header">
         <h1>Privacy Policy</h1>
-        <p className="legal__updated">Last updated September 29, 2026</p>
+        <p className="legal__updated">Last updated September 30, 2026</p>
       </div>
 
       <div className="legal__doc">
@@ -83,6 +83,13 @@ export default function Privacy() {
           by Firebase. If you enable notifications, Firebase Cloud
           Messaging stores a push token for your device so we can send
           them.
+        </p>
+        <p>
+          To keep modified or copied versions of the game off our servers,
+          the app uses Firebase App Check. Google Play Integrity (Android)
+          or Apple App Attest (iOS) confirms the game is our unmodified app
+          on a real device, and our server checks that confirmation. It
+          carries no gameplay data and is not used for analytics or ads.
         </p>
         <p>
           The gameplay events we send to Firebase Analytics are also
@@ -190,8 +197,10 @@ export default function Privacy() {
             <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer noopener">Google Privacy Policy</a>
           </li>
           <li>
-            <strong>Firebase Analytics, Crashlytics, and Cloud Messaging</strong>{" "}
-            (Google) - analytics, crash reporting, notifications.{" "}
+            <strong>Firebase Analytics, Crashlytics, Cloud Messaging, and App Check</strong>{" "}
+            (Google) - analytics, crash reporting, notifications, and
+            confirming requests come from the genuine app (via Google Play
+            Integrity on Android and Apple App Attest on iOS).{" "}
             <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noreferrer noopener">Firebase privacy</a>
           </li>
           <li>
